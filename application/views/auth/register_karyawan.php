@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <title>register karyawan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
@@ -20,7 +20,7 @@
     }
     .image img {
     width: 220px;
-    height: auto;
+    height: 600px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     }
@@ -78,7 +78,7 @@
 <div class="image">
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
-<form action="" class="my-form">
+<form action="<?php echo base_url('auth/aksi_register'); ?>" method="post" class="my-form">
 <h4 class="font-weight-bold mb-3">create a new account</h4>
 <br>
 <br>
@@ -86,43 +86,39 @@
 <!-- username -->
 <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
-<input type="username" id="usernameExample" class="form-control">
 <label for="usernameExample">Username</label>
+<input type="username" name="username" id="usernameExample" class="form-control">
 </div>
 <!-- email -->
 <div class="md-form md-outline">
 <i class="fas fa-lock prefix"></i>
-<input type="email" id="emailExample" class="form-control">
 <label for="emailExample">Email</label>
+<input type="email" name="email" id="emailExample" class="form-control">
 </div>
-<!-- nama -->
+<!-- password  -->
 <div class="md-form md-outline">
 <i class="fas fa-lock prefix"></i>
-<input type="nama" id="nama" class="form-control">
-<label for="nama">Nama Depan</label>
-</div>
-<!-- nama -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<input type="nama" id="nama" class="form-control">
-<label for="nama">Nama Belakang</label>
-</div>
-<!-- password -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<input type="password" id="exampleInputPassword1" class="form-control">
 <label for="exampleInputPassword1">Password</label>
+<input type="password" name="password" id="exampleInputPassword1" class="form-control">
 </div>
-<!-- password -->
+ <!-- nama -->
 <div class="md-form md-outline">
 <i class="fas fa-lock prefix"></i>
-<input type="role" id="exampleInputPassword1" class="form-control">
-<label for="role">Role</label>
+<label for="nama">Nama Depan</label>
+<input type="nama" name="nama_depan" id="nama" class="form-control">
 </div>
+ <!-- nama  -->
+<div class="md-form md-outline">
+<i class="fas fa-lock prefix"></i>
+<label for="nama">Nama Belakang</label>
+<input type="nama" name="nama_belakang" id="nama" class="form-control">
+</div> 
+<br>
 <div class="float-right">
-<form action="./login" class="my-form" method="post"><button class="btn btn-rounded" type="submit">Log In</button>
+    <a href="<?php echo base_url('auth/login')?>" class="btn btn-rounded" type="submit">Register</a></a></p>
 </div>
 <hr>
+<p class="text-center">already have an account? <a href="./login">account login</a></p>
 <!-- <a class="link" href="#!">Forgot password? Click here.</a> -->
 </form>
 </div>
