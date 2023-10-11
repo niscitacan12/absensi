@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 <body>
@@ -42,26 +43,29 @@
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <a href="#" class="flex items-center pl-2.5 mb-5">
-         <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
-         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">SMK Bina Nusantara</span>
+         <!-- <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" /> -->
+         <i class="fa-solid fa-circle-user"></i>
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span> 
       </a>
+      <br>
+      <hr>
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="keuangan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-chart-line fa-xl"></i>
-               <span class="ml-3">Dashboard Keuangan</span>
+            <a href="index" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <i class="fa-solid fa-house"></i>
+               <span class="ml-3">Home</span>
             </a>
          </li>
          <li>
-          <a href="<?php echo base_url('keuangan/pembayaran')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <a href="<?php echo base_url('karyawan/absensi')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
           <i class="fa-solid fa-user fa-xl"></i>
-            <span class="ml-3">Pembayaran</span>
+            <span class="ml-3">Absensi Karyawan</span>
          </li>
-         <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+          <!-- untuk memberikan jarak -->
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
-               <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
-             <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
+                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan  -->
+             <a href="<?php echo base_url('auth/login')?>" style="color: #fff; text-decoration: none;"> 
                 <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg" 
                 alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" /> 
              </a> 
@@ -69,25 +73,39 @@
          </div>
       </ul>
    </div>
-</aside>
-<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Absensi <?php echo $this->session->userdata(
+</aside> 
+<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Karyawan <?php echo $this->session->userdata(
     'username'
 ); ?></h1>
     <div class="flex space-x-4 p-2 my-5" style="margin-left: 500px;">
     <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Jumlah Pembayaran SPP</p>
+            <p>Total Karyawan</p>
             <br>
-            <h1 class="text-4xl font-bold">1.300.000</h1>
+            <h1 class="text-4xl font-bold">4</h1>
         </div>
         <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Jumlah Pembayaran Uang Gedung</p>
-            <h1 class="text-4xl font-bold">1.500.000</h1>
+            <p>Total Cuti</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
         </div>
         <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Pembayaran Uang Seragam</p>
-            <h1 class="text-4xl font-bold">1.000.000</h1>
+            <p>Jumlah Izin</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
+        </div>
+        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
+            <p>Total Masuk Kerja</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
         </div>
     </div>
+    <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+    <footer class="bg-gray-900 text-white p-4">
+    <div id="content" class="mx-auto w-1/2 flex justify-between items-center">
+        <p>&copy; 2023 Absensi. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="float-end">Develop by Niscita</p>
+    </div>
+</footer>
 
 </body>
 </html>

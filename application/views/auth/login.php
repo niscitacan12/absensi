@@ -88,18 +88,18 @@
 <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
 <label for="emailExample">E-mail address</label>
-<input type="email" id="emailExample" class="form-control">
+<input type="email" id="emailExample" name="email" class="form-control">
 </div>
 <!-- Password -->
 <div class="md-form md-outline">
 <i class="fas fa-lock prefix"></i>
 <label for="passwordExample">Password</label>
-<input type="password" id="passwordExample" class="form-control">
+<input type="password" id="passwordExample" name="password" class="form-control">
 </div>
 <div class="space">
 <br>
 <div class="float-right">
-<button class="btn btn-rounded" type="button">Log in</button>
+<a href="<?php echo base_url('karyawan')?>" class="btn btn-rounded" type="button">Log in</a>
 </div>
 </div>
 <hr>
