@@ -85,18 +85,18 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h5 class="m-0">Absen</h5>
+                <div class="card-header bg-success text-white text-center">
+                    <h5 class="m-0">Absen Jika Izin</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo base_url('karyawan/history_absensi') ?>" method="post">
+                    <form action="<?php echo base_url('admin/aksi_absensi') ?>" method="post">
                         <div class="mb-3">
                             <label for="kegiatan" class="form-label">Kegiatan:</label>
                             <input type="text" class="form-control" id="kegiatan" name="kegiatan">
                         </div>
                         <div class="col-md-6 mt-4">
                         <button type="submit" name="action" value="masuk" class="btn btn-info">
-                          <span>Masuk</span>
+                          <span>Izin</span>
                         </button>
                         </div>
                     </form>

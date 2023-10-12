@@ -3,32 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>history</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Tombol */
-        .btn-default {
-        background-color: #007BFF; /* Warna latar belakang */
-        color: #FFFFFF; /* Warna teks */
-        border: none; /* Hapus garis tepi */
-        padding: 10px 20px; /* Spasi padding */
-        border-radius: 5px; /* Sudut tombol */
-        cursor: pointer; /* Menunjukkan tombol bisa diklik */
-    }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta2/css/all.min.css">
 </head>
 <body>
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
-            </button>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+        </button>
         </div>
     </nav>
 
@@ -81,29 +71,46 @@
         </div>
     </aside>
 
-    <section id="content-wrapper" class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h5 class="m-0">Absen</h5>
-                </div>
-                <div class="card-body">
-                    <form action="<?php echo base_url('karyawan/history_absensi') ?>" method="post">
-                        <div class="mb-3">
-                            <label for="kegiatan" class="form-label">Kegiatan:</label>
-                            <input type="text" class="form-control" id="kegiatan" name="kegiatan">
-                        </div>
-                        <div class="col-md-6 mt-4">
-                        <button type="submit" name="action" value="masuk" class="btn btn-info">
-                          <span>Masuk</span>
-                        </button>
-                        </div>
+<div id="content" class="mx-auto w-3/4">
+<table class="table table-striped table-hover" style="margin-left: 150px">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Kegiatan</th>
+            <th>Tanggal</th>
+            <th>Jam Pulang</th>
+            <th>Jam Masuk</th>
+         
+            <th>Status</th>
+            <th class="text-center">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $no= 0; foreach ($absensi as $row): $no++ ?>
+        <tr>
+            <td><?php echo $no ?></td>
+            <td><?php echo $row->kegiatan ?></td>
+            <td><?php echo $row->date ?></td>
+            <td><?php echo $row->jam_masuk ?></td>
+            <td><?php echo $row->jam_pulang ?></td>
+           
+            <td><?php echo $row->status ?></td>
+            <td>
+                <?php if ($row->status !== 'Done') : ?>
+                    <form action="<?php echo base_url('karyawan/aksi_pulang')?>" method="post">
+                         <input type="hidden" name="id_karyawan" value="<?php echo $row->id_karyawan ?>">
+                         <button type="submit" class="btn btn-primary">Pulang</button>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <?php endif; ?>
+                    <a href="<?php echo base_url('karyawan/aksi_ubah' . $row->id_karyawan)?>"
+                    class="btn btn-primary">Ubah</a>
+                    <button onClick="hapus(<?php echo $row->id_karyawan?>)"
+                    class="btn btn-danger">Hapus</button>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+</div>
 </body>
 </html>

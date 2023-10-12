@@ -39,6 +39,21 @@ class M_model extends CI_Model
         // Masukkan data ke dalam tabel 'users' dan kembalikan hasilnya 
         return $this->db->insert('users', $data); 
     }
+
+    public function checkAbsensiExists($absensi, $tanggal) {
+        // Logika untuk memeriksa apakah data absensi ada dalam database
+       $this->db->select('id_karyawan');
+       $this->db->from('absensi');
+       $this->db->where('id_karyawan', $absensi);
+       $this->db->where('DATE(date)', $tanggal);
+
+       $query = $this->db->get();
+
+       if ($query->num_rows() > 0) {
+        return true;
+       }
+       return false;
+    }
 }
 
 ?>

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
 <body>
-    
-
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
@@ -19,27 +20,9 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
     </button>
-    <!-- <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-     <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"> 
-        <li> 
-          <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a> 
-        </li> 
-        <li> 
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a> 
-        </li> 
-        <li> 
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a> 
-        </li> 
-        <li> 
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a> 
-        </li> 
-      </ul>
-    </div> -->
-  </div>
-</nav>
+</nav>    
 
-
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <a href="#" class="flex items-center pl-2.5 mb-5">
                 <!-- <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" /> -->
@@ -87,31 +70,43 @@
             </ul>
         </div>
     </aside>
-<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Karyawan <?php echo $this->session->userdata(
-    'username'
-); ?></h1>
-    <div class="flex space-x-4 p-2 my-5" style="margin-left: 500px;">
-    <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Total Karyawan</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Total Cuti</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Izin</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Total Masuk Kerja</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
+  </div>
+
+  <section id="content-wrapper" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="m-0">Profil</h2>
+                </div>
+                <div class="row">
+                    <!-- <form action="<?php echo base_url('admin/aksi_absensi') ?>" method="post"> -->
+                        <div class="mb-3 col-6">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="exampleInputUsername" class="form-label">Username</label>
+                            <input type="username" class="form-control" id="exampleInputUsername" name="username">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="exampleInputPassword1" class="form-label">Password Baru</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="password_baru">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="konfirmasi_password" class="form-label">Konfirmasi Password</label>
+                            <input type="password" class="form-control" id="konfirmasi_password" name="konfirmasi_password">
+                        </div>
+                        <div class="col-md-6 mt-4">
+                        <button type="submit" name="action" value="masuk" class="btn btn-info">
+                          <span>Ubah</span>
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
+</section>
 </body>
 </html>
