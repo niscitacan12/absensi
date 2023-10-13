@@ -7,6 +7,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+  <style>
+          /* Tombol */
+          .btn-default {
+        background-color: #007BFF; /* Warna latar belakang */
+        color: #FFFFFF; /* Warna teks */
+        border: none; /* Hapus garis tepi */
+        padding: 10px 20px; /* Spasi padding */
+        border-radius: 5px; /* Sudut tombol */
+        cursor: pointer; /* Menunjukkan tombol bisa diklik */
+    }
+
+    .profile-details { 
+        background: #f3f1f6; 
+ 
+    } 
+ 
+    .profile-details { 
+        background: none; 
+    } 
+ 
+    .profile-details { 
+        width: 78px; 
+    } 
+ 
+    .profile-details img { 
+        height: 52px; 
+        width: 52px; 
+        object-fit: cover; 
+        border-radius: 20px; 
+ 
+        background: #1d1b31; 
+    } 
+ 
+    .profile-details .profile_name, 
+    .profile-details .job { 
+        color: #fff; 
+        font-size: 18px; 
+ 
+    } 
+
+    .profile-details .job { 
+        font-size: 12px; 
+    }
+
+    .card { 
+ text-align: center; 
+ border: 1px solid #ccc; 
+ background-color: #f9f9f9; 
+ border-radius: 5px; 
+}
+
+#content { 
+        /* flex: 1;  */
+        margin-left: 250px; 
+        transition: 0.3s; 
+        /* padding: 20px;  */
+    }
+  </style>
 <body>
     
 
@@ -55,26 +113,28 @@
                     </a>
                 </li>
                 <li>
+                <a href="<?php echo base_url('karyawan/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-file mr-2"></i>
+                  <span class="ml-3">History Absen</span>
+                </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url('karyawan/absensi')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-user fa-xl"></i>
+                    <i class="fas fa-calendar-check mr-2"></i>
                         <span class="ml-3">Absen Karyawan</span>
                     </a>
                 </li>
                 <li>
                 <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <i class="fa-solid fa-layer-group"></i>
+                <i class="fas fa-user-check mr-2"></i>
                   <span class="ml-3">Izin Karyawan</span>
+                </a>
                 </li>
-                <li>
-                <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <i class="fa-solid fa-bookmark fa-flip-horizontal"></i>
-                  <span class="ml-3">History Absen</span>
-                </li>
-                <li>
+                <!-- <li>
                 <a href="<?php echo base_url('karyawan/profil_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <i class="fa-solid fa-users"></i>
                   <span class="ml-3">profil Karyawan</span>
-                </li>
+                </li> -->
                 <br><br> <br><br> <br><br> <br>
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
@@ -87,6 +147,22 @@
             </ul>
         </div>
     </aside>
+
+    <!-- profil -->
+    <div id="content" role="main" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+    <h1 style="margin-bottom: 20px;">Profil Karyawan</h1>
+    <div class="profile-details">
+        <div class="profile-content" style="text-align: center;">
+            <?php
+            $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+            ?>
+            <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
+                <img src="<?php echo $image_url; ?>" alt="profileImg" style="max-width: 100px; height: auto;">
+            </a>
+        </div>
+    </div>
+</div>
+
 <h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Karyawan <?php echo $this->session->userdata(
     'username'
 ); ?></h1>
@@ -112,6 +188,49 @@
             <h1 class="text-4xl font-bold">4</h1>
         </div>
     </div>
-
+<script>
+    // Mengambil nilai jumlah masuk dan jumlah izin dari PHP dan menampilkannya dalam elemen HTML 
+    const jumlahMasukElement = document.getElementById('jumlahMasuk'); 
+    const jumlahIzinElement = document.getElementById('jumlahIzin'); 
+    const jumlahTotalElement = document.getElementById('jumlahTotal'); 
+ 
+    // Menetapkan nilai yang dihitung ke dalam elemen HTML 
+    jumlahMasukElement.textContent = '<?php echo $jumlahMasuk; ?>'; 
+    jumlahIzinElement.textContent = '<?php echo $jumlahIzin; ?>'; 
+    jumlahTotalElement.textContent = '<?php echo $jumlahTotal; ?>'; 
+    </script> 
+ 
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+    <!-- LOGOUT --> 
+    <script> 
+    function confirmLogout() { 
+        Swal.fire({ 
+            title: 'Yakin mau LogOut?', 
+            icon: 'warning', 
+            showCancelButton: true, 
+            confirmButtonColor: '#3085d6', 
+            cancelButtonColor: '#d33', 
+            confirmButtonText: 'Ya', 
+            cancelButtonText: 'Batal' 
+        }).then((result) => { 
+            if (result.isConfirmed) { 
+                window.location.href = "<?php echo base_url('/') ?>"; 
+            } 
+        }); 
+    } 
+    </script> 
+    <script> 
+    function toggleSidebar() { 
+        var sidebar = document.getElementById("sidebar"); 
+        var content = document.getElementById("content"); 
+        sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px"; 
+        content.style.marginLeft = content.style.marginLeft === "250px" ? "0" : "250px"; 
+    } 
+    </script> 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
