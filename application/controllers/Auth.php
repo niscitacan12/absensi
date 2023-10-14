@@ -3,122 +3,121 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('m_model');
-		$this->load->helper('my_helper');
-		// if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'karyawan') {
-		// 	redirect(base_url() . 'auth');
-		//  }
-		// $this->load->library('form_validation');
-	}
+	function __construct(){
+        parent::__construct(); 
+        $this->load->library('form_validation');
+        $this->load->model('m_model');
+    } 
 
     // untuk register admin
-    public function register_admin()
-        {
-            $this->load->view('auth/register_admin');
-        }
+	public function register_admin() {
+        $this->load->view('auth/register_admin');
+    }
 
 	// untuk register karyawan
-	public function register()
-		{
-			$this->load->view('auth/register');
-		}
+	public function register() {
+        $this->load->view('auth/register');
+    }
 
-        // untuk aksi register admin
-		public function aksi_register() { 
-			// Memperoleh data dari formulir 
-			$username = $this->input->post('username', true); 
-			$email = $this->input->post('email', true); 
-			$nama_depan = $this->input->post('nama_depan', true); 
-			$nama_belakang = $this->input->post('nama_belakang', true); 
-			$password = $this->input->post('password', true); 
-		 
-			// Mendapatkan file gambar yang diunggah 
-			$imageFileName = $_FILES['image']['name']; 
-			$imageTempName = $_FILES['image']['tmp_name']; 
-		 
-			// Periksa jika panjang kata sandi minimal 8 karakter 
-			if (strlen($password) < 8) { 
-				// Kata sandi terlalu pendek, tangani sesuai dengan kebutuhan Anda 
-				redirect(base_url() . "auth/register"); 
-			} 
-		 
-			// Hash kata sandi 
-			$hashed_password = md5($password); 
+	// untuk aksi register karyawan
+	public function process_register() {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/]');
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('auth/register');
+        } else {
+            $hashed_password = md5($this->input->post('password'));
+
+            $data = [
+                'username' => $this->input->post('username'),
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email'),
+                'password' => $hashed_password,
+                'role' => 'karyawan',
+                'image' => $this->input->post('user.png')
+            ];
+
+            $this->db->insert('user', $data);
+
+            redirect(base_url('auth'));
+        }
+    }
+
+	// untuk aksi register admin
+	public function process_register_admin() {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/]');
+
+        if ($this->form_validation->run() === FALSE) {
+			$this->load->view('auth/register_admin');
+		} else {
+			$hashed_password = md5($this->input->post('password'));
 		
-			// Persiapkan data untuk dimasukkan ke dalam database 
-			$data = [ 
-				'username' => $username, 
-				'email' => $email, 
-				'nama_depan' => $nama_depan, 
-				'nama_belakang' => $nama_belakang, 
-				'password' => $hashed_password, 
-				'role' => 'karyawan', 
-			]; 
-		 
-			// Muat model database dan masukkan data 
-			$this->load->model('m_model'); 
-			$registration_result = $this->m_model->register_user($data); 
-		 
-			if ($registration_result) { 
-				// Pendaftaran berhasil 
-				$this->session->set_userdata([ 
-					'logged_in' => TRUE, 
-					'email' => $email, 
-					'username' => $username, 
-					'role' => 'karyawan' 
-				]); 
-		 
-				redirect(base_url() . "auth/login"); 
-			} else { 
-				// Pendaftaran gagal, tangani sesuai dengan kebutuhan Anda 
-				redirect(base_url() . "auth/register"); 
-			} 
-		}
+			$data = [
+				'username' => $this->input->post('username'),
+				'first_name' => $this->input->post('nama_depan'),
+				'last_name' => $this->input->post('nama_belakang'),
+				'email' => $this->input->post('email'),
+				'password' => $hashed_password,
+				'role' => 'admin',
+				'image' => 'user.png'  // Perbarui sesuai kebutuhan
+			];
+		
+			// Simpan data ke database
+			$this->db->insert('user', $data);
+		
+			// Redirect ke halaman login
+			return redirect()->to(base_url('auth'));  // Perbarui sesuai kebutuhan
+		}	
+	}	
 
     // untuk login
-    public function login()
-    {
-        $this->load->view('auth/login');
+	public function index() { 
+        $this->load->view('auth/login'); 
+    } 
+
+	public function process_login() {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/]');
+    
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('auth/login');
+        } else {
+            $email = $this->input->post('email', true);
+            $password = $this->input->post('password', true);
+            $data = ['email' => $email];
+            $query = $this->m_model->getwhere('user', $data);
+            $result = $query->row_array();
+    
+            if (!empty($result) && md5($password) === $result['password']) {
+                $data = [
+                    'logged_in' => TRUE,
+                    'email' => $result['email'],
+                    'username' => $result['username'],
+                    'role' => $result['role'],
+                    'id' => $result['id'],
+                ];
+                $this->session->set_userdata($data);
+                if ($this->session->userdata('role') == 'admin') {
+                    redirect(base_url() . 'admin');
+                }elseif($this->session->userdata('role') == 'karyawan'){ 
+                    redirect(base_url() . 'karyawan');
+                } else {
+                    redirect(base_url() . 'auth');
+                }
+            } else {
+                // Set pesan kesalahan
+                $data['login_error'] = 'Email atau kata sandi salah';
+                $this->load->view('auth/login', $data);
+            }
+        }
     }
 
-	public function aksi_login()
-	{
-		$email = $this->input->post('email', true);
-		$password = $this->input->post('password', true);
-		$data = ['email' => $email]; // Perbaiki di sini, hapus koma ekstra
-	
-		$query = $this->m_model->getwhere('admin', $data);
-		$result = $query->row_array();
-	
-		if (!empty($result) && md5($password) === $result['password']) {
-			$data = [
-				'logged_in' => TRUE,
-				'email' => $result['email'],
-				'username' => $result['username'],
-				// 'role' => $result['role'],
-				'id' => $result['id'],
-			]; // Perbaiki di sini, tambahkan tanda koma
-	
-			$this->session->set_userdata($data);
-			if ($this->session->userdata('role') == 'admin') {
-				redirect(base_url()."admin");
-			} elseif ($this->session->userdata('role') == 'karyawan') {
-				redirect(base_url()."karyawan");
-			} else {
-				redirect(base_url()."auth");
-			}
-		} else {
-			redirect(base_url()."auth");
-		}
-	}
-
-	function logout()
-    {
-        $this->session->sess_destroy();
-        redirect(base_url('auth/login'));
-    }
+	function logout() { 
+        $this->session->sess_destroy(); 
+        redirect(base_url('auth')); 
+    } 
 }
 ?>

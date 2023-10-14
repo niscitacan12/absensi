@@ -104,7 +104,7 @@
 </div>
 <hr>
         <br>  
-           <p class="text-center">don't have an account yet? <a href="./">register account</a></p>  
+           <p class="text-center">don't have an account yet? <a href="auth/register">register account</a></p>  
         <br>  
 </form>
 </div>

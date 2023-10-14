@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register admin</title>
+    <title>register karyawan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
@@ -78,49 +78,49 @@
 <div class="image">
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
-<form action="<?php echo base_url('auth/aksi_register'); ?>" method="post" class="my-form">
+<form action="<?php echo base_url('auth/process_register_admin'); ?>" method="post" class="my-form">
 <h4 class="font-weight-bold mb-3">create a new account</h4>
 <br>
 <br>
-<br>
-<!-- username -->
 <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
-<label for="usernameExample">Username</label>
-<input type="username" name="username" id="usernameExample" class="form-control">
-</div>
-<!-- email -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<label for="emailExample">Email</label>
-<input type="email" name="email" id="emailExample" class="form-control">
-</div>
-<!-- password  -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<label for="exampleInputPassword1">Password</label>
-<input type="password" name="password" id="exampleInputPassword1" class="form-control">
-</div>
- <!-- nama -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<label for="nama">Nama Depan</label>
-<input type="nama" name="nama_depan" id="nama" class="form-control">
-</div>
- <!-- nama  -->
-<div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<label for="nama">Nama Belakang</label>
-<input type="nama" name="nama_belakang" id="nama" class="form-control">
-</div> 
-<br>
-<div class="float-right">
-    <a href="<?php echo base_url('auth/login')?>" class="btn btn-rounded" type="submit">Register</a></a></p>
-</div>
-<hr>
-<p class="text-center">already have an account? <a href="./login">account login</a></p>
-<!-- <a class="link" href="#!">Forgot password? Click here.</a> -->
-</form>
+                    <label for="username">Username</label> 
+                    <input type="text" id="username" class="form-control" 
+                        name="username" class="block mb-2 text-sm" required> 
+    </div>
+    <div class="md-form md-outline">
+<i class="fas fa-envelope prefix"></i>
+                    <label for="email">Email</label> 
+                    <input type="email" id="email" class="form-control" name="email" 
+                        class="block mb-2 text-sm" required> 
+    </div>
+    <div class="md-form md-outline">
+<i class="fas fa-envelope prefix"></i>
+                    <label for="nama_depan">Nama Depan</label> 
+                    <input type="text" id="nama_depan" class="form-control" 
+                        name="nama_depan" class="block mb-2 text-sm" required> 
+                        </div>
+                        <div class="md-form md-outline">
+<i class="fas fa-envelope prefix"></i>
+                    <label for="nama_belakang">Nama Belakang</label> 
+                    <input type="text" id="nama_belakang" class="form-control" 
+                        name="nama_belakang" class="block mb-2 text-sm" required> 
+                        </div>
+                        <div class="md-form md-outline">
+<i class="fas fa-envelope prefix"></i>
+                    <label for="password">Password</label> 
+                    <input type="password" id="password" class="form-control" 
+                        name="password" class="block mb-2 text-sm" required> 
+                    <small style="color:red">Kata sandi minimal harus 8 karakter!</small> 
+                    <div class="md-form md-outline">
+                    </div>
+                    <br>
+                    <div class="float-right">
+                    <button type="submit" class="btn btn-rounded">Register</button> 
+                    </div>
+                    <hr>
+                    <p class="text-center">already have an account? <a href="<?php echo base_url('auth')?>">account login</a></p>
+                </form>
 </div>
 </div>
 </div>

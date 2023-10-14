@@ -107,7 +107,7 @@
             <br>
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="index" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                    <a href="karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
                         <i class="fa-solid fa-house"></i>
                         <span class="ml-3">Home</span>
                     </a>
@@ -138,7 +138,7 @@
                 <br><br> <br><br> <br><br> <br>
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
-             <a href="<?php echo base_url('auth/login')?>" style="color: #fff; text-decoration: none;"> 
+             <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
                 <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg" 
                 alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" /> 
              </a> 
@@ -149,17 +149,17 @@
     </aside>
 
     <!-- profil -->
-    <div id="content" role="main" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-    <h1 style="margin-bottom: 20px;">Profil Karyawan</h1>
-    <div class="profile-details">
-        <div class="profile-content" style="text-align: center;">
-            <?php
-            $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
-            ?>
-            <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
-                <img src="<?php echo $image_url; ?>" alt="profileImg" style="max-width: 100px; height: auto;">
-            </a>
-        </div>
+    <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+    <h4 style="margin-bottom: 20px;">Profil Karyawan</h4>
+    <div style="text-align: center;">
+        <?php
+        $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        ?>
+        <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
+                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </a>
     </div>
 </div>
 

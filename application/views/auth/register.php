@@ -119,7 +119,7 @@
                     <button type="submit" class="btn btn-rounded">Register</button> 
                     </div>
                     <hr>
-                    <p class="text-center">already have an account? <a href="<?php echo base_url('auth/login')?>">account login</a></p>
+                    <p class="text-center">already have an account? <a href="<?php echo base_url('auth')?>">account login</a></p>
                 </form>
 </div>
 </div>
