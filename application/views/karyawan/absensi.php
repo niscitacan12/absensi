@@ -19,6 +19,17 @@
         cursor: pointer; /* Menunjukkan tombol bisa diklik */
     }
 
+    <styl>
+        /* Tombol */
+        .btn-default {
+        background-color: #007BFF; /* Warna latar belakang */
+        color: #FFFFFF; /* Warna teks */
+        border: none; /* Hapus garis tepi */
+        padding: 10px 20px; /* Spasi padding */
+        border-radius: 5px; /* Sudut tombol */
+        cursor: pointer; /* Menunjukkan tombol bisa diklik */
+    }
+
     <>
           /* Tombol */
           .btn-default {
@@ -141,8 +152,8 @@
         </div>
     </aside>
 
-    <!-- profil -->
-    <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+     <!-- profil -->
+     <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <h4 style="margin-bottom: 20px;">Profil Karyawan</h4>
     <div style="text-align: center;">
         <?php
@@ -161,23 +172,13 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-primary text-white text-center">
-                    <h5 class="m-0">Menu Absen</h5>
+                <h1>Form Kegiatan Harian</h1>
                 </div>
                 <div class="card-body">
-                <?php
-$id_karyawan = $this->session->userdata('id');
-
-// Memeriksa apakah ID karyawan telah disetel di sesi
-if ($id_karyawan) {
-    echo "ID Karyawan: " . $id_karyawan;
-} else {
-    echo "ID Karyawan tidak ditemukan.";
-}
-?>
                     <form action="<?php echo base_url('karyawan/save_absensi') ?>" method="post">
                         <div class="mb-3">
-                            <label for="kegiatan" class="form-label">Kegiatan:</label>
-                            <input type="text" class="form-control" id="kegiatan" name="kegiatan">
+                        <label for="kegiatan" class="form-label">Kegiatan:</label><br>
+                        <textarea id="kegiatan" name="kegiatan" rows="4" cols="50"></textarea><br>
                         </div>
                         <div class="mb-3 col-6 text-left"> <!-- Tambahkan kelas text-left -->
                         <button type="submit" name="action" value="masuk" class="btn btn-info">

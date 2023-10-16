@@ -16,21 +16,18 @@
                     <h5 class="m-0">Absensi</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo base_url('karyawan/aksi_ubah_karyawan'); ?>" enctype="multipard/form-data" method="post">
-                        <div class="mb-3 col-6">
-                            <label for="kegiatan" class="form-label">Kegiatan</label>
-                            <input class="form-control" name="kegiatan" id="kegiatan" cols="5" rows="5"></input>
-                        </div>
-                        <!-- <div class="mb-3 col-6">
-                            <label for="jam_masuk" class="form-label">Jam Masuk</label>
-                            <input class="form-control" name="jam_masuk" id="jam_masuk" cols="5" rows="5"></input>
-                        </div> -->
-                        <div class="mb-3 col-6 text-left"> <!-- Tambahkan kelas text-left -->
-                        <button type="submit" class="btn btn-primary">
-                           <span>Ubah</span>
-                        </button>
-                        </div>
-                    </form>
+                <form action="<?php echo base_url('karyawan/aksi_ubah_karyawan'); ?>" enctype="multipart/form-data" method="post">
+                   <div class="mb-3 col-6">
+                      <label for="kegiatan" class="form-label">Kegiatan</label>
+                      <textarea class="form-control" name="kegiatan" id="kegiatan" rows="5"></textarea>
+                    </div>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>"> <!-- Tambahkan input tersembunyi untuk id -->
+                    <div class="mb-3 col-6 text-left">
+                       <button type="submit" class="btn btn-primary">
+                       <span>Ubah</span>
+                       </button>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>

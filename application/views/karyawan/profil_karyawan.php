@@ -153,17 +153,18 @@
 </div>
 <br>
 <br>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h2 class="m-0">Profil</h2>
-                </div>
-                <div class="content">
-                    <form action="<?php echo base_url('karyawan/aksi_update_profile') ?>" enctype="mulfipart/form-data" method="post" class="row">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h2 class="m-0">Profil</h2>
+            </div>
+            <div class="content">
+                <form action="<?php echo base_url('karyawan/aksi_update_profile') ?>" enctype="multipart/form-data" method="post">
+                    <div class="row">
                         <div class="mb-3 col-6">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" name="email">
                         </div>
                         <div class="mb-3 col-6">
                             <label for="exampleInputUsername" class="form-label">Username</label>
@@ -177,16 +178,22 @@
                             <label for="nama_belakang" class="form-label">Nama Belakang</label>
                             <input type="text" class="form-control" id="nama_belakang" name="nama_belakang">
                         </div>
-                        <div class="mb-3 col-6 text-left"> <!-- Tambahkan kelas text-left -->
-                        <button type="submit" name="action" value="masuk" class="btn btn-info">
-                           <span>Edit</span>
-                        </button>
+                        <div class="mb-3 col-6">
+                            <label for="nama" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="mb-3 col-6 text-left">
+                        <button type="submit" name="action" value="masuk" class="btn btn-info">
+                            <span>Edit</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
     <script>
     // Mengambil nilai jumlah masuk dan jumlah izin dari PHP dan menampilkannya dalam elemen HTML 
     const jumlahMasukElement = document.getElementById('jumlahMasuk'); 

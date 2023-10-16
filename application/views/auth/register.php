@@ -78,7 +78,7 @@
 <div class="image">
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
-<form action="<?php echo base_url('auth/aksi_register'); ?>" method="post" class="my-form"> 
+<form action="<?php echo base_url('auth/process_register'); ?>" method="post" class="my-form"> 
 <h4 class="font-weight-bold mb-3">create a new account</h4>
 <br>
 <br>

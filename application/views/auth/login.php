@@ -78,7 +78,7 @@
 <div class="image">
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
-<form action="<?php echo base_url();?>Auth/aksi_login" method="post" class="my-form">
+<form action="<?php echo base_url();?>Auth/process_login" method="post" class="my-form">
 <h4 class="font-weight-bold mb-3">Log in to your account</h4>
 <br>
 <br>
@@ -99,13 +99,13 @@
 <div class="space">
 <br>
 <div class="float-right">
-<a href="<?php echo base_url('karyawan')?>" class="btn btn-rounded" type="button">Log in</a>
+<button class="btn btn-rounded" type="submit">Log in</button>
 </div>
 </div>
 <hr>
-        <br>  
+        <!-- <br>  
            <p class="text-center">don't have an account yet? <a href="auth/register">register account</a></p>  
-        <br>  
+        <br>   -->
 </form>
 </div>
 </div>
