@@ -7,26 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
-    <style>
-    table, th, td {
-        border: 1px solid black;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #ddd;
-    }
-</style>
-
 </head>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -91,52 +71,31 @@
       </ul>
    </div>
 </aside>
+
 <div id="content" class="mx-auto w-3/4">
     <table class="table table-striped table-hover" style="margin-left: 150px">
         <thead>
-        <tr>
-            <th>NO</th>
-            <th>
-                KEGIATAN
-            </th>
-            <th>TANGGAL</th>
-            <th>JAM MASUK</th>
-            <th>JAM PULANG</th>
-            <th>KETERANGAN IZIN</th>
-        </tr>
+            <tr>
+                <th>No</th>
+                <th>Kegiatan</th>
+                <th>Tanggal</th>
+                <th>Jam Masuk</th>
+                <th>Jam Pulang</th>
+                <th>Keterangan</th>
+            </tr>
         </thead>
         <tbody>
-        <?php $no=0; foreach ($perminggu as $rekap): $no++ ?>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['kegiatan']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['date']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_masuk']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_pulang']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['keterangan_izin']; ?>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php endforeach?>
-    </tbody>
+            <?php $no= 0; foreach ($absensi as $row): $no++ ?>
+            <tr>
+                <td><?php echo $no ?></td>
+                <td><?php echo $row['kegiatan']; ?></td>
+                <td><?php echo $row['date']; ?></td>
+                <td><?php echo $row['jam_masuk']; ?></td>
+                <td><?php echo $row['jam_pulang']; ?></td>
+                <td><?php echo $row['keterangan_izin']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </div>
 </body>

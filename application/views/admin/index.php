@@ -30,18 +30,18 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-         <li>
-            <a href="data_karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-chart-column"></i>
-               <span class="ml-3">Rekap Keseluruhan</span>
-            </a>
-         </li>
-         <li>
-            <a href="rekap_migguan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-square-poll-vertical"></i>
-               <span class="ml-3">Rekap Mingguan</span>
-            </a>
-         </li>
+            <li>
+                <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fa-solid fa-chart-column"></i>
+                  <span class="ml-3">Rekap Keseluruhan</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo base_url('admin/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-file mr-2"></i>
+                  <span class="ml-3">History Absen</span>
+                </a>
+            </li>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 

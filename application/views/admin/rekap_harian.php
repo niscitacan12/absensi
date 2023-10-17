@@ -91,7 +91,17 @@
       </ul>
    </div>
 </aside>
+
 <div id="content" class="mx-auto w-3/4">
+<form action="<?= base_url('admin/rekapPerHari'); ?>" method="get">
+<div class="text-center">
+    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo isset($_GET['tanggal']) ? $_GET['tanggal'] : ''; ?>">
+    <div class="d-flex justify-content-between" style="margin-top: 10px;">
+        <button type="submit" name="submit" class="btn btn-sm btn-primary" formaction="<?php echo base_url('admin/export_harian')?>">Export</button>
+        <button type="submit" class="btn btn-success">Filter</button>
+    </div>
+</div>
+                    </form>
     <table class="table table-striped table-hover" style="margin-left: 150px">
         <thead>
         <tr>
@@ -106,7 +116,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php $no=0; foreach ($perminggu as $rekap): $no++ ?>
+        <?php $no=0; foreach ($perhari as $rekap): $no++ ?>
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
                                 <td class="px-3 py-4">

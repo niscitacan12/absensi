@@ -53,18 +53,36 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-         <li>
-            <a href="admin/data_karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-chart-column"></i>
-               <span class="ml-3">Rekap Keseluruhan</span>
-            </a>
-         </li>
-         <li>
-            <a href="rekap_mingguan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-square-poll-vertical"></i>
-               <span class="ml-3">Rekap Mingguan</span>
-            </a>
-         </li>
+                <li>
+                    <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Data Keseluruhan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-user"></i>
+                        <span class="ml-3">Karyawan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-day"></i>
+                        <span class="ml-3">Rekap Harian</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-days"></i>
+                        <span class="ml-3">Rekap Mingguan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-week"></i>
+                        <span class="ml-3">Rekap Bulanan</span>
+                    </a>
+                </li>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
@@ -80,6 +98,8 @@
 </aside>
 
 <div id="content" class="mx-auto w-3/4">
+     <!-- tombol export -->
+     <a href="<?php echo base_url('admin/export')?>" class="btn btn-info ml-20">Export</a>
     <table class="table table-striped table-hover" style="margin-left: 150px">
         <thead>
             <tr>

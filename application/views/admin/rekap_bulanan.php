@@ -7,26 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
-    <style>
-    table, th, td {
-        border: 1px solid black;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #ddd;
-    }
-</style>
-
+    
 </head>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -91,53 +72,78 @@
       </ul>
    </div>
 </aside>
+
 <div id="content" class="mx-auto w-3/4">
-    <table class="table table-striped table-hover" style="margin-left: 150px">
-        <thead>
+<form action="<?= base_url('admin/rekap_bulanan'); ?>" method="get">
+                <div class="form-group">
+                    <select class="form-control" id="bulan" name="bulan">
+                        <option>Pilih Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Filter</button>
+            </form>
+            <table class="table">
+            <table class="table">
+    <thead>
         <tr>
-            <th>NO</th>
-            <th>
-                KEGIATAN
-            </th>
-            <th>TANGGAL</th>
-            <th>JAM MASUK</th>
-            <th>JAM PULANG</th>
-            <th>KETERANGAN IZIN</th>
+            <th>Bulan</th>
+            <th>Total Absensi</th>
         </tr>
-        </thead>
-        <tbody>
-        <?php $no=0; foreach ($perminggu as $rekap): $no++ ?>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['kegiatan']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['date']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_masuk']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_pulang']; ?>
-                                    </div>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['keterangan_izin']; ?>
-                                    </div>
-                                </td>
+    </thead>
+    <tbody>
+        <?php foreach ($rekap_bulanan as $data): ?>
+            <tr>
+                <td><?= date("F", mktime(0, 0, 0, $data['bulan'], 1)); ?></td>
+                <td><?= $data['total_absensi']; ?></td>
+            </tr>
+            <tr class="detail-row" data-month="<?= $data['bulan'] ?>">
+                <td colspan="2">
+                <div class="scrollspy">
+                    <table class="table table-striped table-hover" style="margin-left: 150px">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Tanggal</th>
+                                <th>Kegiatan</th>
+                                <th>Masuk</th>
+                                <th>Pulang</th>
+                                <th>Status</th>
                             </tr>
-                            <?php endforeach?>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($rekap_harian as $rekap_harian): ?>
+                                <?php if (date('n', strtotime($rekap_harian['tanggal'])) == $data['bulan']): ?>
+                                    <tr>
+                                        <td><?= $rekap_harian['id']; ?></td>
+                                        <td><?= tampil_full_nama_byid($rekap_harian['id_karyawan']) ?></td>
+                                        <td><?= $rekap_harian['tanggal']; ?></td>
+                                        <td><?= $rekap_harian['kegiatan']; ?></td>
+                                        <td><?= $rekap_harian['jam_masuk']; ?></td>
+                                        <td><?= $rekap_harian['jam_pulang']; ?></td>
+                                        <td><?= $rekap_harian['status']; ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
-    </table>
-</div>
+</table>
 </body>
 </html>
