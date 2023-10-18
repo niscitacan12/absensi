@@ -175,10 +175,10 @@
                 <h1>Form Izin</h1>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo base_url('karyawan/aksi_izin') ?>" method="post">
+                <form method="post" action="<?php echo base_url('karyawan/aksi_izin') ?>">
                         <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan Izin:</label><br>
-                        <textarea id="keterangan" name="keterangan" rows="4" cols="50"></textarea><br>
+                        <textarea type="text" id="keterangan" name="keterangan_izin" rows="4" cols="50"></textarea><br>
                         </div>
                         <div class="mb-3 col-6 text-left"> <!-- Tambahkan kelas text-left -->
                         <button type="submit" name="action" value="masuk" class="btn btn-info">

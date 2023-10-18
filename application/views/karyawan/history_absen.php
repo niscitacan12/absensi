@@ -152,7 +152,7 @@
                 <th>Tanggal</th>
                 <th>Jam Masuk</th>
                 <th>Jam Pulang</th>
-                <th>Keterangan</th>
+                <th>Keterangan_izin</th>
                 <th>Status</th>
                 <th class="text-center">Aksi</th>
             </tr>
@@ -172,8 +172,8 @@
                         Izin
                     <?php else: ?>
                         <a href="<?php echo site_url('karyawan/pulang/' . $row->id); ?>" 
-                                            class="btn btn-success" id="pulangButton_<?php echo $row->id; ?>"><i 
-                                                class="fas fa-house-user"></i></a>
+                        class="btn btn-success" id="pulangButton_<?php echo $row->id; ?>"><i 
+                        class="fas fa-house-user"></i></a>
                         <a href="<?php echo base_url('karyawan/ubah_karyawan/') . $row->id ?>"
                             class="btn btn-primary">
                             <i class="fas fa-edit"></i>

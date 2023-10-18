@@ -7,7 +7,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    
+
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    .text-center {
+    text-align: center;
+    margin-bottom: 20px; /* Atur margin bawah sesuai kebutuhan Anda */
+}
+</style>
+
 </head>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -29,16 +53,16 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-                <li>
+      <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Data Keseluruhan</span>
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i>
-                        <span class="ml-3">Karyawan</span>
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
@@ -72,9 +96,9 @@
       </ul>
    </div>
 </aside>
-
 <div id="content" class="mx-auto w-3/4">
-<form action="<?= base_url('admin/rekap_bulanan'); ?>" method="get">
+    <div class="text-center"> 
+    <form action="<?= base_url('admin/rekap_bulanan'); ?>" method="post">
                 <div class="form-group">
                     <select class="form-control" id="bulan" name="bulan">
                         <option>Pilih Bulan</option>
@@ -92,58 +116,69 @@
                         <option value="12">Desember</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Filter</button>
+                <button type="submit" class="btn btn-success">Filter</button>
             </form>
-            <table class="table">
-            <table class="table">
-    <thead>
-        <tr>
-            <th>Bulan</th>
-            <th>Total Absensi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($rekap_bulanan as $data): ?>
-            <tr>
-                <td><?= date("F", mktime(0, 0, 0, $data['bulan'], 1)); ?></td>
-                <td><?= $data['total_absensi']; ?></td>
-            </tr>
-            <tr class="detail-row" data-month="<?= $data['bulan'] ?>">
-                <td colspan="2">
-                <div class="scrollspy">
-                    <table class="table table-striped table-hover" style="margin-left: 150px">
-                        <thead>
+            <div class="text-center">
+         <br>
+         <div class="">
+            <a href="<?php echo base_url('admin/export_rekap_bulanan')?>" class="btn btn-primary">Export</a>
+
+        </div>
+</div>
+        <br>
+<!-- untuk tabel -->
+<table class="table table-striped table-hover" style="margin-left: 150px">
+    <thead class="bg-gray-50">
                             <tr>
-                                <th>ID</th>
-                                <th>Nama</th>
-                                <th>Tanggal</th>
-                                <th>Kegiatan</th>
-                                <th>Masuk</th>
-                                <th>Pulang</th>
-                                <th>Status</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">NO</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">
+                                    KEGIATAN
+                                </th>
+                                <th class="px-3 py-2 text-xs text-gray-500">TANGGAL</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">JAM MASUK</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">JAM PULANG</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">KETERANGAN IZIN</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($rekap_harian as $rekap_harian): ?>
-                                <?php if (date('n', strtotime($rekap_harian['tanggal'])) == $data['bulan']): ?>
-                                    <tr>
-                                        <td><?= $rekap_harian['id']; ?></td>
-                                        <td><?= tampil_full_nama_byid($rekap_harian['id_karyawan']) ?></td>
-                                        <td><?= $rekap_harian['tanggal']; ?></td>
-                                        <td><?= $rekap_harian['kegiatan']; ?></td>
-                                        <td><?= $rekap_harian['jam_masuk']; ?></td>
-                                        <td><?= $rekap_harian['jam_pulang']; ?></td>
-                                        <td><?= $rekap_harian['status']; ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+                        <?php $no=0; foreach ($absensi as $rekap): $no++ ?>
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
+                                <td class="px-3 py-4">
+                                    <div>
+                                        <?php echo $rekap->kegiatan; ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div>
+                                        <?php echo $rekap->date; ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div>
+                                        <?php echo $rekap->jam_masuk; ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div>
+                                        <?php echo $rekap->jam_pulang; ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div>
+                                        <?php echo $rekap->keterangan_izin; ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach?>
     </tbody>
-</table>
+   
+    </table>
+</div>
+<!-- <script>
+function exportRekapBulanan() {
+    window.location.href = "<?php echo base_url('admin/export_rekap_bulanan'); ?>";
+}
+</script> -->
+
 </body>
 </html>

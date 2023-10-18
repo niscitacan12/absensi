@@ -48,16 +48,16 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-                <li>
+      <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Data Keseluruhan</span>
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i>
-                        <span class="ml-3">Karyawan</span>
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
@@ -97,11 +97,12 @@
 <div class="text-center">
     <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo isset($_GET['tanggal']) ? $_GET['tanggal'] : ''; ?>">
     <div class="d-flex justify-content-between" style="margin-top: 10px;">
+        <button type="submit" class="btn btn-success">Filter</button> <br>
         <button type="submit" name="submit" class="btn btn-sm btn-primary" formaction="<?php echo base_url('admin/export_harian')?>">Export</button>
-        <button type="submit" class="btn btn-success">Filter</button>
     </div>
 </div>
                     </form>
+                    <br>
     <table class="table table-striped table-hover" style="margin-left: 150px">
         <thead>
         <tr>

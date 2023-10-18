@@ -28,16 +28,16 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-                <li>
+      <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Data Keseluruhan</span>
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i>
-                        <span class="ml-3">Karyawan</span>
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
@@ -73,30 +73,33 @@
 </aside>
 
 <div id="content" class="mx-auto w-3/4">
-    <table class="table table-striped table-hover" style="margin-left: 150px">
+     <!-- tombol export -->
+     <a href="<?php echo base_url('admin/export_tabel_karyawan')?>" class="btn btn-info ml-20">Export</a>
+    <table class="table table-striped table-hover" style="margin-left: 150px; border-collapse: collapse; width: 80%;">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Kegiatan</th>
-                <th>Tanggal</th>
-                <th>Jam Masuk</th>
-                <th>Jam Pulang</th>
-                <th>Keterangan</th>
+                <th style="border: 1px solid #000;">No</th>
+                <th style="border: 1px solid #000;">Kegiatan</th>
+                <th style="border: 1px solid #000;">Tanggal</th>
+                <th style="border: 1px solid #000;">Jam Masuk</th>
+                <th style="border: 1px solid #000;">Jam Pulang</th>
+                <th style="border: 1px solid #000;">Keterangan</th>
             </tr>
         </thead>
         <tbody>
-            <?php $no= 0; foreach ($absensi as $row): $no++ ?>
+            <?php $no = 0; foreach ($absensi as $row): $no++ ?>
             <tr>
-                <td><?php echo $no ?></td>
-                <td><?php echo $row['kegiatan']; ?></td>
-                <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['jam_masuk']; ?></td>
-                <td><?php echo $row['jam_pulang']; ?></td>
-                <td><?php echo $row['keterangan_izin']; ?></td>
+                <td style="border: 1px solid #000;"><?php echo $no ?></td>
+                <td style="border: 1px solid #000;"><?php echo $row->kegiatan ?></td>
+                <td style="border: 1px solid #000;"><?php echo $row->date ?></td>
+                <td style="border: 1px solid #000;"><?php echo $row->jam_masuk ?></td>
+                <td style="border: 1px solid #000;"><?php echo $row->jam_pulang ?></td>
+                <td style="border: 1px solid #000;"><?php echo $row->keterangan_izin ?></td>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
         </tbody>
     </table>
 </div>
+
 </body>
 </html>

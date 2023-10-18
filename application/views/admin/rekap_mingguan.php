@@ -25,6 +25,12 @@
     tr:hover {
         background-color: #ddd;
     }
+
+    /* CSS untuk tombol Export */
+    button {
+        margin-bottom: 50px; /* Membuat jarak antara tombol dan tabel */
+        display: block; /* Membuat tombol menjadi blok, sehingga muncul di atas tabel */
+    }
 </style>
 
 </head>
@@ -48,16 +54,16 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-                <li>
+      <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Data Keseluruhan</span>
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i>
-                        <span class="ml-3">Karyawan</span>
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
@@ -92,51 +98,58 @@
    </div>
 </aside>
 <div id="content" class="mx-auto w-3/4">
-    <table class="table table-striped table-hover" style="margin-left: 150px">
-        <thead>
-        <tr>
-            <th>NO</th>
-            <th>
-                KEGIATAN
-            </th>
-            <th>TANGGAL</th>
-            <th>JAM MASUK</th>
-            <th>JAM PULANG</th>
-            <th>KETERANGAN IZIN</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php $no=0; foreach ($perminggu as $rekap): $no++ ?>
+    <!-- tombol export -->
+    <div class="text-center"> 
+            <a href="<?php echo base_url('admin/export_rekap_mingguan')?>" class="btn btn-info">Export</a> 
+ 
+        </div>
+        <br>
+<!-- untuk tabel -->
+<table class="table table-striped table-hover" style="margin-left: 150px">
+    <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 py-2 text-xs text-gray-500">NO</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">
+                                    KEGIATAN
+                                </th>
+                                <th class="px-3 py-2 text-xs text-gray-500">TANGGAL</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">JAM MASUK</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">JAM PULANG</th>
+                                <th class="px-3 py-2 text-xs text-gray-500">KETERANGAN IZIN</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-300">
+                            <?php $no=0; foreach ($absensi as $absen): $no++ ?>
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
                                 <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['kegiatan']; ?>
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $absen->kegiatan; ?>
                                     </div>
                                 </td>
                                 <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['date']; ?>
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $absen->date; ?>
                                     </div>
                                 </td>
                                 <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_masuk']; ?>
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $absen->jam_masuk; ?>
                                     </div>
                                 </td>
                                 <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['jam_pulang']; ?>
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $absen->jam_pulang; ?>
                                     </div>
                                 </td>
                                 <td class="px-3 py-4">
-                                    <div>
-                                        <?php echo $rekap['keterangan_izin']; ?>
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $absen->keterangan_izin; ?>
                                     </div>
                                 </td>
                             </tr>
                             <?php endforeach?>
-    </tbody>
+                        </tbody>
     </table>
 </div>
 </body>

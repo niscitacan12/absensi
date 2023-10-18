@@ -100,11 +100,17 @@ class M_model extends CI_Model
         return false;
     }
 
-    public function ubah_karyawan($id, $data) {
-        // Gantilah ini dengan logika yang sesuai untuk mengubah data karyawan
-        // Anda dapat menggunakan perintah SQL untuk mengupdate data dalam database
-        $this->db->where('id', $id);
-        return $this->db->update('tabel_karyawan', $data);
+    // public function ubah_karyawan($id, $data) {
+    //     // Gantilah ini dengan logika yang sesuai untuk mengubah data karyawan
+    //     // Anda dapat menggunakan perintah SQL untuk mengupdate data dalam database
+    //     $this->db->where('id', $id);
+    //     return $this->db->update('tabel_karyawan', $data);
+    // }
+
+    public function update($table, $data, $where)
+    {
+        $data = $this->db->update($table, $data, $where);
+        return $this->db->affected_rows();
     }
 
     public function updateStatusPulang($id) {
@@ -113,6 +119,25 @@ class M_model extends CI_Model
             'jam_pulang' => date('H:i:s'),
             'status' => 'true'
         );
+    }
+
+    public function addIzin($data) {
+        // Fungsi ini digunakan untuk menambahkan izin.
+        // Anda dapat mengisi date saat ini sebagai date izin.
+        // Anda juga perlu mengatur status ke "izin" dan jam masuk serta jam pulang ke NULL.
+    
+        $data = array(
+            'id_karyawan' => $data['id_karyawan'], // Menggunakan data dari parameter
+            'keterangan_izin' => $data['keterangan'],      // Menggunakan data dari parameter
+            'date' => date('Y-m-d'),
+            'kegiatan' => '-',
+            'jam_masuk' => '-',
+            'jam_pulang' => '-',
+            'status' => 'Izin'
+        );
+    
+        // Selanjutnya, masukkan data ini ke tabel "absensi".
+        $this->db->insert('absensi', $data);
     }
 
     public function update_image($user_id, $new_image) {
@@ -201,19 +226,27 @@ class M_model extends CI_Model
                           ->where('date <=', $end_date)
                           ->group_by('date, kegiatan, jam_masuk, jam_pulang, keterangan_izin, status')
                           ->get();
-        return $query->result_array();
+        return $query->result();
     }
 
-    public function getRekapBulanan($bulan)
+    public function get_bulanan($date)
     {
-        $this->db->select('MONTH(date) as bulan, COUNT(*) as total_absensi'); // Tambahkan "as" setelah "MONTH(date)"
         $this->db->from('absensi');
-        $this->db->where('MONTH(date)', $bulan);
+        $this->db->where("DATE_FORMAT(absensi.date, '%m') =", $date);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getRekapBulanan($bulan) {
+        $this->db->select('MONTH(date) as bulan, COUNT(*) as total_absensi');
+        $this->db->from('absensi');
+        $this->db->where('MONTH(date)', $bulan); // Menyaring data berdasarkan bulan
         $this->db->group_by('bulan');
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
+
   public function getPerHari($tanggal)
         {
             $this->db->select('absensi.id, absensi.date, absensi.kegiatan, absensi.id_karyawan, absensi.jam_masuk, absensi.jam_pulang, absensi.keterangan_izin');
@@ -243,6 +276,14 @@ class M_model extends CI_Model
             } else {
                 return array(); // Mengembalikan array kosong jika tidak ada data
             }
+        }
+
+        public function getHistoriKaryawan() { 
+            // Gantilah 'histori_karyawan' dengan nama tabel histori karyawan Anda. 
+            $query = $this->db->get('absensi'); 
+     
+            // Kembalikan data dalam bentuk array. 
+            return $query->result(); 
         }
 }
 ?>

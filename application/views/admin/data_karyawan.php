@@ -55,14 +55,14 @@
       <ul class="space-y-2 font-medium">
                 <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Data Keseluruhan</span>
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i>
-                        <span class="ml-3">Karyawan</span>
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
@@ -99,13 +99,15 @@
 
 <div id="content" class="mx-auto w-3/4">
      <!-- tombol export -->
-     <a href="<?php echo base_url('admin/export')?>" class="btn btn-info ml-20">Export</a>
+     <a href="<?php echo base_url('admin/export_data_karyawan')?>" class="btn btn-info ml-20">Export</a>
     <table class="table table-striped table-hover" style="margin-left: 150px">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Nama Depan</th>
+                <th>Nama Belakang</th>
             </tr>
         </thead>
         <tbody>
@@ -114,6 +116,8 @@
                 <td><?php echo $no ?></td>
                 <td><?php echo $row->username ?></td>
                 <td><?php echo $row->email ?></td>
+                <td><?php echo $row->nama_depan ?></td>
+                <td><?php echo $row->nama_belakang ?></td>
             </tr>
             <?php endforeach ?>
         </tbody>

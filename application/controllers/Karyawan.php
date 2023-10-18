@@ -42,11 +42,12 @@ class karyawan extends CI_Controller
     }
 
      // untuk izin karyawan
-     public function izin_karyawan()
-     {
-         $data['absensi'] = $this->M_model->get_data('absensi')->result();
-         $this->load->view('karyawan/izin_karyawan', $data);
-     }
+     public function izin_karyawan() {
+    
+        $data['absensi'] = $this->M_model->get_data('absensi')->result();
+        $data['akun'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
+        $this->load->view('karyawan/izin_karyawan', $data);
+}
 
     // untuk ubah
     public function ubah_karyawan($id) {
@@ -65,6 +66,27 @@ class karyawan extends CI_Controller
             $this->load->view('karyawan/profil_karyawan', $data);
         }
 
+        // untuk aksi ubah
+        public function aksi_ubah_karyawan() { 
+            $id = $this->input->post('id'); 
+            $kegiatan = $this->input->post('kegiatan'); 
+        
+            $data = [
+                'kegiatan' => $kegiatan,
+            ];
+        
+            $this->M_model->update('absensi', $data, array('id'=>$id)); 
+            redirect(base_url('karyawan/history_absen')); 
+            $this->session->set_flashdata('berhasil_ubah_absen', 'Berhasil mengubah kegiatan atau keterangan izin'); 
+        }
+        
+        public function absen()
+	{
+		$id_karyawan = $this->session->userdata('id');
+		$data['absensi'] = $this->m_model->get_absensi_by_karyawan($id_karyawan);
+		$this->load->view('karyawan/history_absen', $data);
+	}
+
         // // untuk aksi absensi
         public function save_absensi()
         {
@@ -76,11 +98,11 @@ class karyawan extends CI_Controller
             $jam = date('H:i:s', strtotime($current_datetime));
 
             // Ambil nilai $keterangan dari formulir POST
-            $keterangan = $this->input->post('keterangan_izin');
+            $keterangan_izin = $this->input->post('keterangan_izin');
 
             // Periksa apakah $keterangan memiliki nilai, jika tidak, beri nilai default (misalnya, '')
-            if ($keterangan === NULL) {
-                $keterangan = '';
+            if ($keterangan_izin === NULL) {
+                $keterangan_izin = '';
             }
 
             $data = [
@@ -89,7 +111,7 @@ class karyawan extends CI_Controller
                 'date' => $tanggal,
                 'jam_masuk' => $jam,
                 'jam_pulang' => '',
-                'keterangan_izin' => $keterangan,
+                'keterangan_izin' => $keterangan_izin,
                 'status' => 'Not',
             ];        
 
@@ -102,35 +124,33 @@ class karyawan extends CI_Controller
     // untuk aksi izin
     public function aksi_izin() {
         $id_karyawan = $this->session->userdata('id');
-        $tanggal_sekarang = date('Y-m-d'); // Mendapatkan tanggal hari ini
-       
-        // Cek apakah sudah melakukan absen hari ini
-        $is_already_absent = $this->M_model->cek_absen($id_karyawan, $tanggal_sekarang);
-       
-        // Cek apakah sudah melakukan izin hari ini
-        $is_already_izin = $this->M_model->cek_izin($id_karyawan, $tanggal_sekarang);
-       
-        if ($is_already_absent) {
-         $this->session->set_flashdata('gagal_izin', 'Anda sudah melakukan absen hari ini.');
-        } elseif ($is_already_izin) {
-         $this->session->set_flashdata('gagal_izin', 'Anda sudah mengajukan izin hari ini.');
+        date_default_timezone_set('Asia/Jakarta');
+        $current_datetime = date('Y-m-d H:i:s');
+        $absensi = $this->session->userdata('id');
+
+        $tanggal = date('Y-m-d', strtotime($current_datetime));
+        $keterangan_izin = $this->input->post('keterangan_izin');
+        $data = [
+            'id_karyawan' => $id_karyawan,
+            'kegiatan' => '-',
+            'date' => $tanggal,
+            'jam_masuk' => '',
+            'jam_pulang' => '',
+            'status' => 'Done',
+            'keterangan_izin' =>$this->input->post('keterangan_izin'),
+
+        ];
+
+        $hasSubmittedAbsensi = $this->M_model->checkAbsensiExists($absensi, date('Y-m-d'));
+
+        if (!$hasSubmittedAbsensi) {
+            $this->M_model->tambah_data('absensi', $data);
         } else {
-         $data = [
-          'id_karyawan' => $id_karyawan,
-          'kegiatan' => '-',
-          'status' => 'true',
-          'keterangan_izin' => $this->input->post('keterangan'),
-          'jam_masuk' => '00:00:00', // Mengosongkan jam_masuk
-          'jam_pulang' => '00:00:00', // Mengosongkan jam_pulang
-          'date' => $tanggal_sekarang, // Menyimpan tanggal izin
-         ];
-         $this->M_model->tambah_data('absensi', $data);
-         $this->session->set_flashdata('berhasil_izin', 'Berhasil Izin.');
+
         }
-       
         redirect(base_url('karyawan/history_absen'));
-       }
-    
+    }  
+
      // untuk hapus
      public function hapus($id)
      {
