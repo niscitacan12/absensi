@@ -143,11 +143,6 @@
                                 <span class="ml-3">Izin Karyawan</span>
                             </a>
                         </li>
-                        <!-- <li>
-                <a href="<?php echo base_url('karyawan/profil_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <i class="fa-solid fa-users"></i>
-                  <span class="ml-3">profil Karyawan</span>
-                </li> -->
                         <br><br> <br><br> <br><br> <br>
                         <div>
                             <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan -->
@@ -180,7 +175,7 @@
             </div>
             <br>
             <br>
-            <!-- content -->
+            <!-- content profil-->
             <div class="container">
                 <div class="row ">
                     <?php foreach($akun as $user) : ?>
@@ -203,6 +198,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- content data -->
                     <div class="col-xl-8">
                         <div class="card mb-4">
                             <div class="card-header bg-primary text-white text-center">Informasi Data</div>
@@ -235,13 +231,19 @@
                                         </div>
                                     </div>
                                     <div class="row gx-3 mb-3">
+                                       <div class="col-md-6">
+                                            <label class="small mb-1" for="password">Password Lama</label>
+                                            <div class="input-group">
+                                                <input class="form-control" id="password" type="password" placeholder="Masukkan password lama" name="password_lama">
+                                            </div>
+                                       </div>
+                                    </div>
+                                    <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
                                             <label class="small mb-1" for="password">Password Baru</label>
                                             <div class="input-group">
                                                 <input class="form-control" id="password" type="password"
                                                     placeholder="Masukan password baru" name="password_baru">
-                                                <span class="input-group-text" onclick="togglePassword('password')"><i
-                                                        id="icon-password" class="fas fa-eye"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -249,9 +251,6 @@
                                             <div class="input-group">
                                                 <input class="form-control" id="konfirmasi_password" type="password"
                                                     placeholder="Konfirmasi password" name="konfirmasi_password">
-                                                <span class="input-group-text"
-                                                    onclick="togglePassword('konfirmasi_password')"><i
-                                                        id="icon-konfirmasi" class="fas fa-eye"></i></span>
                                             </div>
                                         </div>
                                     </div>

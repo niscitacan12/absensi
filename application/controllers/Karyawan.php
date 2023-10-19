@@ -141,6 +141,12 @@ class karyawan extends CI_Controller
 
         ];
 
+        if ($this->input->post('keterangan_izin')) {
+            $keterangan_izin = $this->input->post('keterangan_izin');
+        } else {
+            $keterangan_izin = ''; // Atau Anda dapat menetapkan nilai default sesuai kebutuhan.
+        }        
+
         $hasSubmittedAbsensi = $this->M_model->checkAbsensiExists($absensi, date('Y-m-d'));
 
         if (!$hasSubmittedAbsensi) {
@@ -249,7 +255,7 @@ class karyawan extends CI_Controller
 		}
 
 		$this->session->set_userdata($data);
-		$update_result = $this->m_model->ubah_data('user', $data, array('id' => $this->session->userdata('id')));
+		$update_result = $this->M_model->ubah_data('user', $data, array('id' => $this->session->userdata('id')));
 
 		if ($update_result) {
 			$this->session->set_flashdata('update_user', 'Data berhasil diperbarui');

@@ -79,7 +79,7 @@
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
 <form action="<?php echo base_url('auth/process_register_admin'); ?>" method="post" class="my-form">
-<h4 class="font-weight-bold mb-3">create a new account</h4>
+<h4 class="font-weight-bold mb-3">buat akun baru</h4>
 <br>
 <br>
 <div class="md-form md-outline">
@@ -108,9 +108,12 @@
                         </div>
                         <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
-                    <label for="password">Password</label> 
-                    <input type="password" id="password" class="form-control" 
+                    <label for="exampleInputPassword1">Password</label> 
+                    <input type="exampleInputPassword1" id="exampleInputPassword1" class="form-control" 
                         name="password" class="block mb-2 text-sm" required> 
+                        <input type="checkbox" id="showPassword" 
+                        onclick="togglePasswordVisibility('exampleInputPassword1')">Show Password</input> 
+                        <br>
                     <small style="color:red">Kata sandi minimal harus 8 karakter!</small> 
                     <div class="md-form md-outline">
                     </div>
@@ -119,12 +122,28 @@
                     <button type="submit" class="btn btn-rounded">Register</button> 
                     </div>
                     <hr>
-                    <p class="text-center">already have an account? <a href="<?php echo base_url('auth')?>">account login</a></p>
+                    <p class="text-center">Sudah memiliki akun? <a href="<?php echo base_url('auth')?>">akun Masuk</a></p>
                 </form>
 </div>
 </div>
 </div>
 </div> 
+     <!-- aksi show password -->
+<script>
+        // Ambil elemen password input
+        var passwordInput = document.getElementById("exampleInputPassword1");
         
+        // Ambil elemen checkbox "Show Password"
+        var showPasswordCheckbox = document.getElementById("showPassword");
+
+        // Tambahkan event listener untuk mengubah tipe input password menjadi text ketika checkbox "Show Password" dicentang
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (this.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+    </script>   
 </body>
 </html>

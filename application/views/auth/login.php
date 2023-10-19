@@ -93,8 +93,10 @@
 <!-- Password -->
 <div class="md-form md-outline">
 <i class="fas fa-lock prefix"></i>
-<label for="passwordExample">Password</label>
-<input type="password" id="passwordExample" name="password" class="form-control">
+<label for="exampleInputPassword1">Password</label>
+<input type="exampleInputPassword1" id="exampleInputPassword1" name="password" class="form-control">
+<input type="checkbox" id="showPassword" 
+onclick="togglePasswordVisibility('exampleInputPassword1')">Show Password</input> 
 </div>
 <div class="space">
 <br>
@@ -111,6 +113,22 @@
 </div>
 </div>
 </div> 
+     <!-- aksi show password -->
+<script>
+        // Ambil elemen password input
+        var passwordInput = document.getElementById("exampleInputPassword1");
         
+        // Ambil elemen checkbox "Show Password"
+        var showPasswordCheckbox = document.getElementById("showPassword");
+
+        // Tambahkan event listener untuk mengubah tipe input password menjadi text ketika checkbox "Show Password" dicentang
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (this.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+    </script>      
 </body>
 </html>

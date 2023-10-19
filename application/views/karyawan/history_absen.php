@@ -152,7 +152,7 @@
                 <th>Tanggal</th>
                 <th>Jam Masuk</th>
                 <th>Jam Pulang</th>
-                <th>Keterangan_izin</th>
+                <th>Keterangan izin</th>
                 <th>Status</th>
                 <th class="text-center">Aksi</th>
             </tr>

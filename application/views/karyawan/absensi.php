@@ -139,7 +139,7 @@
                 <i class="fa-solid fa-users"></i>
                   <span class="ml-3">profil Karyawan</span>
                 </li> -->
-                <br><br> <br><br> <br><br> <br>
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
