@@ -54,6 +54,7 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
+        <hr>
       <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
@@ -85,7 +86,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -97,6 +98,21 @@
       </ul>
    </div>
 </aside>
+
+ <!-- profil -->
+ <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+    <div style="text-align: center;">
+        <?php
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        ?>
+        <a href="<?php echo base_url('admin/profil_admin') ?>">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
+                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </a>
+    </div>
+</div>
+<br>
 <div id="content" class="mx-auto w-3/4">
     <!-- tombol export -->
     <div class="text-center"> 

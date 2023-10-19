@@ -72,6 +72,7 @@
   </style>
 </head>
 <body>
+    <!-- nav -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify between mx-auto p-4">
             <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -83,6 +84,7 @@
         </div>
     </nav>
 
+    <!-- sidebar -->
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <a href="#" class="flex items-center pl-2.5 mb-5">
@@ -115,7 +117,7 @@
                         <span class="ml-3">Izin Karyawan</span>
                     </a>
                 </li>
-                <br><br> <br><br> <br><br> 
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
                 <div> 
                 <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan -->
                 <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
@@ -130,10 +132,9 @@
 
   <!-- profil -->
   <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
-    <h4 style="margin-bottom: 20px;">Profil Karyawan</h4>
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
         ?>
         <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">

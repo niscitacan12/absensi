@@ -135,7 +135,7 @@
                 <i class="fa-solid fa-users"></i>
                   <span class="ml-3">profil Karyawan</span>
                 </li> -->
-                <br><br> <br><br> <br><br> <br>
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
@@ -150,10 +150,9 @@
 
     <!-- profil -->
     <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
-    <h4 style="margin-bottom: 20px;">Profil Karyawan</h4>
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
         ?>
         <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
@@ -162,12 +161,13 @@
         </a>
     </div>
 </div>
-
-<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Karyawan <?php echo $this->session->userdata(
+<br>
+<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard <?php echo $this->session->userdata(
     'username'
 ); ?></h1>
-    <div class="flex space-x-4 p-2 my-5" style="margin-left: 500px;">
-    <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
+<br>
+    <div class="flex space-x-4 p-2 my-5" style="margin-left: 400px;">
+        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
             <p>Total Karyawan</p>
             <br>
             <h1 class="text-4xl font-bold">4</h1>

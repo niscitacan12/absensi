@@ -299,5 +299,6 @@ class karyawan extends CI_Controller
          // Tangani kesalahan unggah gambar
         }
        }
+
 }
 ?>

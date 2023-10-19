@@ -285,5 +285,24 @@ class M_model extends CI_Model
             // Kembalikan data dalam bentuk array. 
             return $query->result(); 
         }
+
+        // Fungsi untuk mengunggah gambar profil baru
+// public function uploadProfileImage() {
+//     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === 0) {
+//         $targetDirectory = './assets/images/user/'; // Lokasi penyimpanan gambar
+//         $targetFile = $targetDirectory . basename($_FILES['profile_image']['name']);
+//         $uploadSuccess = move_uploaded_file($_FILES['profile_image']['tmp_name'], $targetFile);
+
+//         if ($uploadSuccess) {
+//             // Simpan referensi ke gambar dalam sesi atau database
+//             $this->session->userdata['image'] = $_FILES['profile_image']['name'];
+//             return true; // Unggah gambar berhasil
+//         } else {
+//             return false; // Unggah gambar gagal
+//         }
+//     } else {
+//         return false; // Tidak ada gambar yang diunggah
+//     }
+// }
 }
 ?>

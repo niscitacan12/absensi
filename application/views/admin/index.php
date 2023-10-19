@@ -30,18 +30,36 @@
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
-            <li>
-                <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <i class="fa-solid fa-chart-column"></i>
-                  <span class="ml-3">Rekap Keseluruhan</span>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('admin/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <i class="fas fa-file mr-2"></i>
-                  <span class="ml-3">History Absen</span>
-                </a>
-            </li>
+                <li>
+                    <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-day"></i>
+                        <span class="ml-3">Rekap Harian</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-days"></i>
+                        <span class="ml-3">Rekap Mingguan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-week"></i>
+                        <span class="ml-3">Rekap Bulanan</span>
+                    </a>
+                </li>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
@@ -55,6 +73,38 @@
       </ul>
    </div>
 </aside>
+
+ <!-- profil -->
+ <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+    <div style="text-align: center;">
+        <?php
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        ?>
+        <a href="<?php echo base_url('admin/profil_admin') ?>">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
+                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </a>
+    </div>
+</div>
+<br>
+<div class="flex space-x-4 p-2 my-5" style="margin-left: 400px;">
+        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
+            <p>Total Karyawan</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
+        </div>
+        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
+            <p>Jumlah Izin</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
+        </div>
+        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
+            <p>Total Masuk Kerja</p>
+            <br>
+            <h1 class="text-4xl font-bold">4</h1>
+        </div>
+    </div>
 
 </body>
 </html>

@@ -139,7 +139,7 @@
                 <i class="fa-solid fa-users"></i>
                   <span class="ml-3">profil Karyawan</span>
                 </li> -->
-                <br><br> <br><br> <br><br> <br>
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
@@ -154,10 +154,9 @@
 
      <!-- profil -->
      <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
-    <h4 style="margin-bottom: 20px;">Profil Karyawan</h4>
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
         ?>
         <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
