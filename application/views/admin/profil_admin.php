@@ -163,7 +163,7 @@
                 style="display: flex;  " class="mx-auto ">
                 <h1 style="margin-bottom: 20px;">Profil </h1>
                 <div style="text-align: center;">
-                    <?php $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');?>
+                    <?php $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');?>
                     <a href="<?php echo base_url('admin/profil_admin') ?>">
                         <div
                             style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">

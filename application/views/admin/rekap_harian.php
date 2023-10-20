@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
     table, th, td {
@@ -14,7 +15,7 @@
     }
 
     th, td {
-        padding: 8px;
+        padding: 4px;
         text-align: left;
     }
 
@@ -80,7 +81,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -98,7 +99,7 @@
  <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
         ?>
         <a href="<?php echo base_url('admin/profil_admin') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
@@ -111,11 +112,15 @@
 <div id="content" class="mx-auto w-3/4">
 <form action="<?= base_url('admin/rekapPerHari'); ?>" method="get">
 <div class="text-center">
-    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo isset($_GET['tanggal']) ? $_GET['tanggal'] : ''; ?>">
-    <div class="d-flex justify-content-between" style="margin-top: 10px;">
-        <button type="submit" class="btn btn-success">Filter</button> <br>
-        <button type="submit" name="submit" class="btn btn-sm btn-primary" formaction="<?php echo base_url('admin/export_harian')?>">Export</button>
+    <div class="text-center">
+  <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo isset($_GET['tanggal']) ? $_GET['tanggal'] : ''; ?>" style="width: 150px; margin: 0 auto;">
     </div>
+    <br>
+  <div class="btn-group" style="margin-top: 5px;">
+  <button type="submit" class="btn btn-info text-black" style="margin-top: 10px;">Filter</button>
+<br>
+<button type="submit" name="submit" class="btn btn-sm btn-info" formaction="<?php echo base_url('admin/export_harian')?>" style="background-color: ; border-color: #17a2b8; color: black;  margin-top: 10px;">Export</button>
+  </div>
 </div>
                     </form>
                     <br>

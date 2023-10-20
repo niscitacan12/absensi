@@ -419,10 +419,10 @@ public function hapus($id) {
         $sheet->getColumnDimension('A')->setWidth(5); 
         $sheet->getColumnDimension('B')->setWidth(25); 
         $sheet->getColumnDimension('C')->setWidth(30); 
-        $sheet->getColumnDimension('D')->setWidth(35); 
-        $sheet->getColumnDimension('E')->setWidth(40); 
-        $sheet->getColumnDimension('F')->setWidth(45); 
-        $sheet->getColumnDimension('G')->setWidth(50);
+        $sheet->getColumnDimension('D')->setWidth(20); 
+        $sheet->getColumnDimension('E')->setWidth(20); 
+        $sheet->getColumnDimension('F')->setWidth(30); 
+        $sheet->getColumnDimension('G')->setWidth(25);
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
 
         $sheet

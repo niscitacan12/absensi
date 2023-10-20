@@ -123,10 +123,11 @@ class karyawan extends CI_Controller
 
     // untuk aksi izin
     public function aksi_izin() {
-        $id_karyawan = $this->session->userdata('id');
-        date_default_timezone_set('Asia/Jakarta');
+        if ($this->session->userdata('id')) {
+            $id_karyawan = $this->session->userdata('id');
+            date_default_timezone_set('Asia/Jakarta');
         $current_datetime = date('Y-m-d H:i:s');
-        $absensi = $this->session->userdata('id');
+        $absensi = $id_karyawan;
 
         $tanggal = date('Y-m-d', strtotime($current_datetime));
         $keterangan_izin = $this->input->post('keterangan_izin');
@@ -134,8 +135,8 @@ class karyawan extends CI_Controller
             'id_karyawan' => $id_karyawan,
             'kegiatan' => '-',
             'date' => $tanggal,
-            'jam_masuk' => '',
-            'jam_pulang' => '',
+            'jam_masuk' => '-',
+            'jam_pulang' => '-',
             'status' => 'Done',
             'keterangan_izin' =>$this->input->post('keterangan_izin'),
 
@@ -155,7 +156,8 @@ class karyawan extends CI_Controller
 
         }
         redirect(base_url('karyawan/history_absen'));
-    }  
+    } 
+} 
 
      // untuk hapus
      public function hapus($id)

@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -61,7 +62,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -78,7 +79,7 @@
  <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
         ?>
         <a href="<?php echo base_url('admin/profil_admin') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
@@ -90,7 +91,9 @@
 <br>
 <div id="content" class="mx-auto w-3/4">
      <!-- tombol export -->
-     <a href="<?php echo base_url('admin/export_tabel_karyawan')?>" class="btn btn-info ml-20">Export</a>
+     <a href="<?php echo base_url('admin/export_data_karyawan')?>" class="btn btn-success ml-20">Export</a>
+     <br>
+     <br>
     <table class="table table-striped table-hover" style="margin-left: 150px; border-collapse: collapse; width: 80%;">
         <thead>
             <tr>
@@ -112,11 +115,10 @@
                 <td style="border: 1px solid #000;"><?php echo $row->jam_masuk ?></td>
                 <td style="border: 1px solid #000;"><?php echo $row->jam_pulang ?></td>
                 <td style="border: 1px solid #000;"><?php echo $row->keterangan_izin ?></td>
-                <!-- <td style="border: 1px solid #000;" class="text-center">
-    <button onClick="hapusData(<?php echo $row->id; ?>)" class="btn btn-danger">
-        <i class="fas fa-trash"></i>
-    </button>
-</td> -->
+                <!-- <td><button type="button" onclick="hapus(<?php echo $row->id ?>)" class="btn btn-sm btn-square btn-danger text-danger-hover-none">
+                       <i class="bi bi-trash"></i>
+                    </button>
+                </td> -->
             </tr>
             <?php endforeach ?>
         </tbody>

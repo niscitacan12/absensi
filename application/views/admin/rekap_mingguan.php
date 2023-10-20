@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
     table, th, td {
@@ -86,7 +87,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -103,7 +104,7 @@
  <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
         <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('images/user/User.png');
+        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
         ?>
         <a href="<?php echo base_url('admin/profil_admin') ?>">
             <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
@@ -114,11 +115,8 @@
 </div>
 <br>
 <div id="content" class="mx-auto w-3/4">
-    <!-- tombol export -->
-    <div class="text-center"> 
-            <a href="<?php echo base_url('admin/export_rekap_mingguan')?>" class="btn btn-info">Export</a> 
- 
-        </div>
+    <!-- tombol export --> 
+    <a href="<?php echo base_url('admin/export_data_karyawan')?>" class="btn btn-success ml-20">Export</a>
         <br>
 <!-- untuk tabel -->
 <table class="table table-striped table-hover" style="margin-left: 150px">
