@@ -74,7 +74,6 @@ public function hapus($id) {
     }
 }
 
-
     // profil
     public function profil_admin()
     {
@@ -373,11 +372,12 @@ public function hapus($id) {
  
         $sheet->setCellValue('A3', "ID"); 
         $sheet->setCellValue('B3', "KEGIATAN"); 
-        $sheet->setCellValue('C3', "TANGGAL"); 
-        $sheet->setCellValue('D3', "JAM MASUK"); 
-        $sheet->setCellValue('E3', "JAM PULANG"); 
-        $sheet->setCellValue('F3', "KETERANGAN"); 
-        $sheet->setCellValue('G3', "STATUS"); 
+        $sheet->setCellValue('C3', "NAMA"); 
+        $sheet->setCellValue('D3', "TANGGAL"); 
+        $sheet->setCellValue('E3', "JAM MASUK"); 
+        $sheet->setCellValue('F3', "JAM PULANG"); 
+        $sheet->setCellValue('G3', "KETERANGAN"); 
+        $sheet->setCellValue('H3', "STATUS"); 
  
         
         $sheet->getStyle('A3')->applyFromArray($style_col); 
@@ -387,6 +387,7 @@ public function hapus($id) {
         $sheet->getStyle('E3')->applyFromArray($style_col); 
         $sheet->getStyle('F3')->applyFromArray($style_col); 
         $sheet->getStyle('G3')->applyFromArray($style_col); 
+        $sheet->getStyle('H3')->applyFromArray($style_col); 
  
         $data = $this->M_model->getHistoriKaryawan(); 
  
@@ -396,12 +397,13 @@ public function hapus($id) {
         foreach($data as $data) { 
              
         $sheet->setCellValue('A'.$numrow,$data->id); 
-        $sheet->setCellValue('B'.$numrow,$data->kegiatan); 
-        $sheet->setCellValue('C'.$numrow,$data->date);  
-        $sheet->setCellValue('D'.$numrow,$data->jam_masuk);  
-        $sheet->setCellValue('E'.$numrow,$data->jam_pulang);  
-        $sheet->setCellValue('F'.$numrow,$data->keterangan_izin);  
-        $sheet->setCellValue('G'.$numrow,$data->status);  
+        $sheet->setCellValue('B'.$numrow,$data->username); 
+        $sheet->setCellValue('C'.$numrow,$data->kegiatan);  
+        $sheet->setCellValue('D'.$numrow,$data->date);  
+        $sheet->setCellValue('E'.$numrow,$data->jam_masuk);  
+        $sheet->setCellValue('F'.$numrow,$data->jam_pulang);  
+        $sheet->setCellValue('G'.$numrow,$data->keterangan_izin);  
+        $sheet->setCellValue('H'.$numrow,$data->status);  
  
         $sheet->getStyle('A'.$numrow)->applyFromArray($style_row); 
         $sheet->getStyle('B'.$numrow)->applyFromArray($style_row); 
@@ -410,6 +412,7 @@ public function hapus($id) {
         $sheet->getStyle('E'.$numrow)->applyFromArray($style_row); 
         $sheet->getStyle('F'.$numrow)->applyFromArray($style_row); 
         $sheet->getStyle('G'.$numrow)->applyFromArray($style_row); 
+        $sheet->getStyle('H'.$numrow)->applyFromArray($style_row); 
  
         $no++; 
         $numrow++; 
@@ -423,6 +426,7 @@ public function hapus($id) {
         $sheet->getColumnDimension('E')->setWidth(20); 
         $sheet->getColumnDimension('F')->setWidth(30); 
         $sheet->getColumnDimension('G')->setWidth(25);
+        $sheet->getColumnDimension('H')->setWidth(25);
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
 
         $sheet
@@ -513,11 +517,12 @@ public function hapus($id) {
             ->setBold(true);
 
         $sheet->setCellValue('A3', 'No');
-        $sheet->setCellValue('B3', 'Kegiatan');
-        $sheet->setCellValue('C3', 'Tanggal');
-        $sheet->setCellValue('D3', 'Jam Masuk');
-        $sheet->setCellValue('E3', 'Jam Pulang');
-        $sheet->setCellValue('F3', 'Keterangan');
+        $sheet->setCellValue('B3', 'Nama');
+        $sheet->setCellValue('C3', 'Kegiatan');
+        $sheet->setCellValue('D3', 'Tanggal');
+        $sheet->setCellValue('E3', 'Jam Masuk');
+        $sheet->setCellValue('F3', 'Jam Pulang');
+        $sheet->setCellValue('G3', 'Keterangan');
 
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
@@ -525,6 +530,7 @@ public function hapus($id) {
         $sheet->getStyle('D3')->applyFromArray($style_col);
         $sheet->getStyle('E3')->applyFromArray($style_col);
         $sheet->getStyle('F3')->applyFromArray($style_col);
+        $sheet->getStyle('G3')->applyFromArray($style_col);
 
         $harian = $this->M_model->getPerHari($tanggal);
 
@@ -532,11 +538,12 @@ public function hapus($id) {
         $numrow = 4;
         foreach ($harian as $data) {
             $sheet->setCellValue('A' . $numrow, $no);
-            $sheet->setCellValue('B' . $numrow, $data['kegiatan']);
-            $sheet->setCellValue('C' . $numrow, $data['date']);
-            $sheet->setCellValue('D' . $numrow, $data['jam_masuk']);
-            $sheet->setCellValue('E' . $numrow, $data['jam_pulang']);
-            $sheet->setCellValue('F' . $numrow, $data['keterangan_izin']);
+            $sheet->setCellValue('B' . $numrow, $data['username']);
+            $sheet->setCellValue('C' . $numrow, $data['kegiatan']);
+            $sheet->setCellValue('D' . $numrow, $data['date']);
+            $sheet->setCellValue('E' . $numrow, $data['jam_masuk']);
+            $sheet->setCellValue('F' . $numrow, $data['jam_pulang']);
+            $sheet->setCellValue('G' . $numrow, $data['keterangan_izin']);
 
             $sheet->getStyle('A' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('B' . $numrow)->applyFromArray($style_row);
@@ -544,6 +551,7 @@ public function hapus($id) {
             $sheet->getStyle('D' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('E' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('F' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('G' . $numrow)->applyFromArray($style_row);
 
             $no++;
             $numrow++;
@@ -555,6 +563,7 @@ public function hapus($id) {
         $sheet->getColumnDimension('D')->setWidth(20);
         $sheet->getColumnDimension('E')->setWidth(30);
         $sheet->getColumnDimension('F')->setWidth(30);
+        $sheet->getColumnDimension('G')->setWidth(30);
 
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
 

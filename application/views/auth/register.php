@@ -20,7 +20,7 @@
     }
     .image img {
     width: 220px;
-    height: 600px;
+    height: 620px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     }
@@ -118,7 +118,7 @@
                     <div class="md-form md-outline">
                     </div>
                     <br>
-                    <div class="float-right">
+                    <div class="">
                     <button type="submit" class="btn btn-rounded">Register</button> 
                     </div>
                     <hr>

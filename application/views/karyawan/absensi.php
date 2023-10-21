@@ -103,10 +103,10 @@
 
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <a href="#" class="flex items-center pl-2.5 mb-5">
-                <!-- <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" /> -->
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
-            </a>
+        <a href="#" class="flex flex-col items-center mb-5">
+    <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+    <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
+</a>
             <hr>
             <br>
             <ul class="space-y-2 font-medium">
@@ -139,7 +139,7 @@
                 <i class="fa-solid fa-users"></i>
                   <span class="ml-3">profil Karyawan</span>
                 </li> -->
-                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
                 <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 

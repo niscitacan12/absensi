@@ -31,6 +31,7 @@
       </a>
       <ul class="space-y-2 font-medium">
         <hr>
+        <br>
       <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
@@ -62,7 +63,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -91,13 +92,14 @@
 <br>
 <div id="content" class="mx-auto w-3/4">
      <!-- tombol export -->
-     <a href="<?php echo base_url('admin/export_data_karyawan')?>" class="btn btn-success ml-20">Export</a>
+     <a href="<?php echo base_url('admin/export_tabel_karyawan')?>" class="btn btn-success ml-20">Export</a>
      <br>
      <br>
     <table class="table table-striped table-hover" style="margin-left: 150px; border-collapse: collapse; width: 80%;">
         <thead>
             <tr>
                 <th style="border: 1px solid #000;">No</th>
+                <!-- <th style="border: 1px solid #000;">Nama</th> -->
                 <th style="border: 1px solid #000;">Kegiatan</th>
                 <th style="border: 1px solid #000;">Tanggal</th>
                 <th style="border: 1px solid #000;">Jam Masuk</th>
@@ -110,6 +112,7 @@
             <?php $no = 0; foreach ($absensi as $row): $no++ ?>
             <tr>
                 <td style="border: 1px solid #000;"><?php echo $no ?></td>
+                <!-- <td style="border: 1px solid #000;"><?php echo $row->username ?></td> -->
                 <td style="border: 1px solid #000;"><?php echo $row->kegiatan ?></td>
                 <td style="border: 1px solid #000;"><?php echo $row->date ?></td>
                 <td style="border: 1px solid #000;"><?php echo $row->jam_masuk ?></td>

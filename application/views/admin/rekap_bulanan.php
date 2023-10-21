@@ -55,6 +55,7 @@
       </a>
       <ul class="space-y-2 font-medium">
         <hr>
+        <br>
       <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
@@ -86,7 +87,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -135,11 +136,12 @@
                 <option value="11">November</option>
                 <option value="12">Desember</option>
             </select>
-            <button type="submit" class="btn btn-info text-black" style="margin-top: 10px;">Filter</button>
-        <br>
-    <div style="text-align: left;">
-        <button type="submit" class="btn btn-sm btn-info" formaction="<?php echo base_url('admin/export_harian')?>" style="background-color: ; border-color: #17a2b8; color: black;">Export</button>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+    <button type="submit" class="btn btn-info text-black" style="margin-top: 10px; margin-right: 5px;">Filter</button>
+    <div style="justify-content: flex-start;">
+    <button type="submit" class="btn btn-sm btn-info" formaction="<?php echo base_url('admin/export_rekap_bulanan')?>" style="background-color: ; border-color: #17a2b8; color: black; margin-top: 10px;">Export</button>
     </div>
+</div>
         </div>
     </div>
     </div>

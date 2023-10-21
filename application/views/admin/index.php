@@ -29,6 +29,9 @@
          <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
+      <br><br>
+      <hr>
+      <br>
       <ul class="space-y-2 font-medium">
                 <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

@@ -89,11 +89,11 @@
     <!-- sidebar -->
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <a href="#" class="flex items-center pl-2.5 mb-5">
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
-            </a>
-            <hr>
-            <br>
+        <a href="#" class="flex flex-col items-center mb-5">
+    <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+    <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
+</a><hr>
+<br>
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
@@ -119,7 +119,7 @@
                         <span class="ml-3">Izin Karyawan</span>
                     </a>
                 </li>
-                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
                 <div> 
                 <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan -->
                 <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 

@@ -143,7 +143,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
@@ -159,7 +159,7 @@
         <!-- profil -->
         <div class="col-10">
             <!-- profil -->
-            <div id="content" role="main"
+            <!-- <div id="content" role="main"
                 style="display: flex;  " class="mx-auto ">
                 <h1 style="margin-bottom: 20px;">Profil </h1>
                 <div style="text-align: center;">
@@ -174,7 +174,7 @@
                 </div>
             </div>
             <br>
-            <br>
+            <br> -->
             <!-- content profil-->
             <div class="container">
                 <div class="row ">
@@ -205,16 +205,18 @@
                             <div class="card-body">
                                 <form action="<?php echo base_url('admin/edit_profile'); ?>"
                                     enctype="multipart/form-data" method="post">
-                                    <div class="mb-3">
+                                    <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
                                         <label class="small mb-1" for="email">Email</label>
                                         <input class="form-control" id="email" type="email" placeholder="Masukan email"
                                             value="<?php echo $user->email ?>" name="email">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="col-md-6">
                                         <label class="small mb-1" for="username">Username</label>
                                         <input class="form-control" id="username" type="text"
                                             placeholder="Masukan username" value="<?php echo $user->username ?>"
                                             name="username">
+                                    </div>
                                     </div>
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">
@@ -231,30 +233,41 @@
                                         </div>
                                     </div>
                                     <div class="row gx-3 mb-3">
-                                       <div class="col-md-6">
-                                            <label class="small mb-1" for="password">Password Lama</label>
-                                            <div class="input-group">
-                                                <input class="form-control" id="password" type="text" placeholder="Masukkan password lama" name="password_lama">
-                                            </div>
-                                       </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="password">Password Baru</label>
-                                            <div class="input-group">
-                                                <input class="form-control" id="password" type="text"
-                                                    placeholder="Masukan password baru" name="password_baru">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="password">Konfirmasi Password</label>
-                                            <div class="input-group">
-                                                <input class="form-control" id="konfirmasi_password" type="text"
-                                                    placeholder="Konfirmasi password" name="konfirmasi_password">
-                                            </div>
-                                        </div>
-                                    </div>
-
+    <div class="col-md-6">
+        <label class="small mb-1" for="password">Password Lama</label>
+        <div class="input-group">
+            <input class="form-control" id="password" type="password" placeholder="Masukkan password lama" name="password_lama">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="showPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label class="small mb-1" for="password">Password Baru</label>
+        <div class="input-group">
+            <input class="form-control" id="newPassword" type="password" placeholder="Masukan password baru" name="password_baru">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="showNewPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+        <label class="small mb-1" for="password">Konfirmasi Password</label>
+        <div class="input-group">
+            <input class="form-control" id="konfirmasi_password" type="password" placeholder="Konfirmasi password" name="konfirmasi_password">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="showConfirmPassword">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
                                     <button class="btn btn-info" type="submit">Simpan Perubahan</button>
                                 </form>
                             </div>
@@ -312,6 +325,42 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+     <!-- script untuk password -->
+     <script>
+    document.getElementById('showPassword').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordInput.placeholder = 'Password Lama';
+        } else {
+            passwordInput.type = 'password';
+            passwordInput.placeholder = '•••••••••';
+        }
+    });
+
+    document.getElementById('showNewPassword').addEventListener('click', function() {
+        var newPasswordInput = document.getElementById('newPassword');
+        if (newPasswordInput.type === 'password') {
+            newPasswordInput.type = 'text';
+            newPasswordInput.placeholder = 'Password Baru';
+        } else {
+            newPasswordInput.type = 'password';
+            newPasswordInput.placeholder = '•••••••••';
+        }
+    });
+
+    document.getElementById('showConfirmPassword').addEventListener('click', function() {
+        var confirmPasswordInput = document.getElementById('konfirmasi_password');
+        if (confirmPasswordInput.type === 'password') {
+            confirmPasswordInput.type = 'text';
+            confirmPasswordInput.placeholder = 'Konfirmasi Password';
+        } else {
+            confirmPasswordInput.type = 'password';
+            confirmPasswordInput.placeholder = '•••••••••';
+        }
+    });
+</script>
 </body>
 
 </html>

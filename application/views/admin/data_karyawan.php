@@ -58,6 +58,7 @@
       </a>
       <ul class="space-y-2 font-medium">
         <hr>
+        <br>
                 <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
@@ -89,7 +90,7 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
          <div> 
                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
              <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
