@@ -112,7 +112,7 @@
                     <input type="exampleInputPassword1" id="exampleInputPassword1" class="form-control" 
                         name="password" class="block mb-2 text-sm" required> 
                         <input type="checkbox" id="showPassword" 
-                        onclick="togglePasswordVisibility('exampleInputPassword1')">Show Password</input> 
+                        onclick="togglePasswordVisibility('exampleInputPassword1')">Tampilkan Kata Sandi</input> 
                         <br>   
                     <small style="color:red">Kata sandi minimal harus 8 karakter!</small> 
                     <div class="md-form md-outline">

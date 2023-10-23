@@ -102,78 +102,55 @@
     </nav>
 
     <div class="row">
-        <!-- sidebar -->
         <div class="col-2">
-            <aside id="logo-sidebar"
-                class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black"
-                aria-label="Sidebar">
-                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                    <a href="#" class="flex items-center pl-2.5 mb-5">
-                        <!-- <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" /> -->
-                        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+            <!-- sidebar -->
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+            <a href="#" class="flex flex-col items-center mb-5">
+                <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+                <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
+            </a>
+            <hr>
+            <br>
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="ml-3">Home</span>
                     </a>
-                    <hr>
-                    <br>
-                    <ul class="space-y-2 font-medium">
-                        <li>
-                            <a href="karyawan"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                                <i class="fa-solid fa-house"></i>
-                                <span class="ml-3">Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('karyawan/history_absen')?>"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <i class="fas fa-file mr-2"></i>
-                                <span class="ml-3">History Absen</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('karyawan/absensi')?>"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <i class="fas fa-calendar-check mr-2"></i>
-                                <span class="ml-3">Absen Karyawan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('karyawan/izin_karyawan')?>"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <i class="fas fa-user-check mr-2"></i>
-                                <span class="ml-3">Izin Karyawan</span>
-                            </a>
-                        </li>
-                        <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
-                        <div>
-                            <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan -->
-                            <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;">
-                                <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg"
-                                    alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" />
-                            </a>
-                            Logout
-                        </div>
-                    </ul>
-                </div>
-            </aside>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('karyawan/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fas fa-file mr-2"></i>
+                        <span class="ml-3">History Absen</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('karyawan/absensi')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        <span class="ml-3">Absen Karyawan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-user-check mr-2"></i>
+                        <span class="ml-3">Izin Karyawan</span>
+                    </a>
+                </li>
+                <!-- Sidebar item lainnya -->
+                <!-- ... -->
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
+                <li>
+                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span class="ml-3">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
         </div>
         <div class="col-10">
-            <!-- profil -->
-            <!-- <div id="content" role="main"
-                style="display: flex;  " class="mx-auto ">
-                <h1 style="margin-bottom: 20px;">Profil</h1>
-                <div style="text-align: center;">
-                    <?php $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');?>
-                    <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
-                        <div
-                            style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
-                            <img src="<?php echo $image_url; ?>" alt="profileImg"
-                                style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <br>
-            <br> -->
             <!-- content profil-->
             <div class="container">
                 <div class="row ">

@@ -18,9 +18,15 @@ class Admin extends CI_Controller
     }
 
     public function index()
-	{
-		$this->load->view('admin/index');
-	}
+    {
+        // Memanggil model dan mengambil data
+        $this->load->model('M_model'); // Gantilah "M_model" dengan nama model yang sesuai.
+        $data['absensi'] = $this->M_model->get_absensi_data(); // Gantilah "get_absensi_data" dengan nama metode yang sesuai di model.
+    
+        // Mengirim data ke tampilan
+        $this->load->view('admin/index', $data);
+    }
+    
 
     public function data_karyawan()
 	{
@@ -62,7 +68,6 @@ class Admin extends CI_Controller
     }
 
     // untuk hapus 
-   // Misalnya, dalam controller Anda
 public function hapus($id) {
     // Lakukan penghapusan data dengan ID tertentu dari database.
     // Pastikan Anda mengeksekusi query penghapusan dengan benar.

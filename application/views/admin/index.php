@@ -8,9 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   </head>
-<body>
-    
+  <style>
+    #content { 
+        /* flex: 1;  */
+        margin-left: 200px; 
+        transition: 0.3s; 
+        /* padding: 20px;  */
+    }
 
+    table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  </style>
+<body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
@@ -29,7 +57,7 @@
          <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
       </a>
-      <br><br>
+      <br>
       <hr>
       <br>
       <ul class="space-y-2 font-medium">
@@ -64,15 +92,13 @@
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
-         <div> 
-               <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
-             <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
-                <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg" 
-                alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" /> 
-             </a> 
-             Logout
-         </div>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <li>
+                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span class="ml-3">Logout</span>
+                    </a>
+                </li>
       </ul>
    </div>
 </aside>
@@ -108,6 +134,35 @@
             <h1 class="text-4xl font-bold">4</h1>
         </div>
     </div>
-
+    <br><br>
+    <div id="content" class="mx-auto w-3/4">
+    <table class="table table-striped table-hover" style="margin-left: 150px">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Kegiatan</th>
+                <th>Tanggal</th>
+                <th>Jam Masuk</th>
+                <th>Jam Pulang</th>
+                <th>Keterangan izin</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php $no = 0; foreach ($absensi as $row): $no++ ?>
+<tr>
+                <td><?php echo $no ?></td>
+                <td><?php echo $row->kegiatan ?></td>
+                <td><?php echo $row->date ?></td>
+                <td><?php echo $row->jam_masuk ?></td>
+                <td><?php echo $row->jam_pulang ?></td>
+                <td><?php echo $row->keterangan_izin ?></td>
+                <td><?php echo $row->status ?></td>
+</tr>
+<?php endforeach ?>
+        </tbody>
+    </table>
+</div>
+</div>
 </body>
 </html>

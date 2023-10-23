@@ -79,7 +79,7 @@
 <img src="https://mdbootstrap.com/img/Photos/Others/sidenav2.jpg">
 </div>
 <form action="<?php echo base_url();?>Auth/process_login" method="post" class="my-form">
-<h4 class="font-weight-bold mb-3">Log in to your account</h4>
+<h4 class="font-weight-bold mb-3">Masuk ke akun Anda</h4>
 <br>
 <br>
 <br>
@@ -87,7 +87,7 @@
 <!-- Email address -->
 <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
-<label for="emailExample">E-mail address</label>
+<label for="emailExample">Alamat email</label>
 <input type="email" id="emailExample" name="email" class="form-control">
 </div>
 <!-- Password -->
@@ -96,7 +96,7 @@
 <label for="exampleInputPassword1">Password</label>
 <input type="exampleInputPassword1" id="exampleInputPassword1" name="password" class="form-control">
 <input type="checkbox" id="showPassword" 
-onclick="togglePasswordVisibility('exampleInputPassword1')">Show Password</input> 
+onclick="togglePasswordVisibility('exampleInputPassword1')">Tampilkan Kata Sandi</input> 
 </div>
 <div class="space">
 <br>
@@ -105,9 +105,7 @@ onclick="togglePasswordVisibility('exampleInputPassword1')">Show Password</input
 </div>
 </div>
 <hr>
-        <!-- <br>  
-           <p class="text-center">don't have an account yet? <a href="auth/register">register account</a></p>  
-        <br>   -->
+<p class="text-center">belum punya akun? <a href="./auth/register">daftar akun</a></p> 
 </form>
 </div>
 </div>

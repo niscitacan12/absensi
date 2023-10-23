@@ -20,7 +20,7 @@ class karyawan extends CI_Controller
             'title' => 'Dashboard Karyawan', // Judul halaman
             'content' => 'Selamat datang di dashboard karyawan.', // Konten halaman
         );
-
+        $data['absensi'] = $this->M_model->get_absensi_data();
         // Menampilkan tampilan (sesuaikan dengan nama tampilan Anda)
         $this->load->view('karyawan/index', $data);
     }

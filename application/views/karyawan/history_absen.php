@@ -89,11 +89,12 @@
     <!-- sidebar -->
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-        <a href="#" class="flex flex-col items-center mb-5">
-    <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
-    <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
-</a><hr>
-<br>
+            <a href="#" class="flex flex-col items-center mb-5">
+                <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+                <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
+            </a>
+            <hr>
+            <br>
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
@@ -114,23 +115,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover.bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
                         <i class="fas fa-user-check mr-2"></i>
                         <span class="ml-3">Izin Karyawan</span>
                     </a>
                 </li>
-                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
-                <div> 
-                <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan -->
-                <a href="<?php echo base_url('auth')?>" style="color: #fff; text-decoration: none;"> 
-                    <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg" 
-                    alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" /> 
-                </a> 
-                Logout
-            </div>
-        </ul>
-    </div>
-</aside>
+                <!-- Sidebar item lainnya -->
+                <!-- ... -->
+                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
+                <li>
+                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span class="ml-3">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
 
   <!-- profil -->
   <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
@@ -151,6 +152,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Nama</th>
                 <th>Kegiatan</th>
                 <th>Tanggal</th>
                 <th>Jam Masuk</th>
@@ -164,6 +166,7 @@
             <?php $no= 0; foreach ($absensi as $row): $no++ ?>
             <tr>
                 <td><?php echo $no ?></td>
+                <td><?php echo $row->username ?></td>
                 <td><?php echo $row->kegiatan ?></td>
                 <td><?php echo $row->date ?></td>
                 <td><?php echo $row->jam_masuk ?></td>
@@ -181,9 +184,6 @@
                             class="btn btn-primary">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <button onClick="hapus(<?php echo $row->id; ?>)" class="btn btn-danger">
-                            <i class="fas fa-trash"></i>
-                        </button>
                     <?php endif; ?>
                 </td>
             </tr>

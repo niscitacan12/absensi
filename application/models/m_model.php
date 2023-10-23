@@ -100,13 +100,6 @@ class M_model extends CI_Model
         return false;
     }
 
-    // public function ubah_karyawan($id, $data) {
-    //     // Gantilah ini dengan logika yang sesuai untuk mengubah data karyawan
-    //     // Anda dapat menggunakan perintah SQL untuk mengupdate data dalam database
-    //     $this->db->where('id', $id);
-    //     return $this->db->update('tabel_karyawan', $data);
-    // }
-
     public function update($table, $data, $where)
     {
         $data = $this->db->update($table, $data, $where);
@@ -122,10 +115,6 @@ class M_model extends CI_Model
     }
 
     public function addIzin($data) {
-        // Fungsi ini digunakan untuk menambahkan izin.
-        // Anda dapat mengisi date saat ini sebagai date izin.
-        // Anda juga perlu mengatur status ke "izin" dan jam masuk serta jam pulang ke NULL.
-    
         $data = array(
             'id_karyawan' => $data['id_karyawan'], // Menggunakan data dari parameter
             'keterangan_izin' => $data['keterangan'],      // Menggunakan data dari parameter
@@ -186,7 +175,6 @@ class M_model extends CI_Model
     }
 
     public function getDataKaryawan() {
-        // Gantilah 'histori_karyawan' dengan nama tabel histori karyawan Anda.
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('role', 'karyawan');
@@ -209,9 +197,6 @@ class M_model extends CI_Model
 
     public function get_absensi()
     {
-        // Gantilah bagian ini dengan logika pengambilan data absensi sesuai dengan struktur database Anda.
-        // Misalnya, Anda dapat mengambil data absensi dari tabel 'absensi' dalam database.
-        // Berikut hanya contoh sederhana, Anda perlu sesuaikan dengan struktur dan tabel yang sebenarnya.
         $query = $this->db->get('absensi');
         return $query->result_array();
     }
@@ -266,7 +251,6 @@ class M_model extends CI_Model
         }
 
         public function get_data_perhari() {
-            // Gantilah kode ini dengan logika untuk mengambil data perhari dari database
             $this->db->select('*');
             $this->db->from('absensi');
             $query = $this->db->get();
@@ -279,30 +263,20 @@ class M_model extends CI_Model
         }
 
         public function getHistoriKaryawan() { 
-            // Gantilah 'histori_karyawan' dengan nama tabel histori karyawan Anda. 
             $query = $this->db->get('absensi'); 
      
             // Kembalikan data dalam bentuk array. 
             return $query->result(); 
         }
 
-        // Fungsi untuk mengunggah gambar profil baru
-// public function uploadProfileImage() {
-//     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === 0) {
-//         $targetDirectory = './assets/images/user/'; // Lokasi penyimpanan gambar
-//         $targetFile = $targetDirectory . basename($_FILES['profile_image']['name']);
-//         $uploadSuccess = move_uploaded_file($_FILES['profile_image']['tmp_name'], $targetFile);
-
-//         if ($uploadSuccess) {
-//             // Simpan referensi ke gambar dalam sesi atau database
-//             $this->session->userdata['image'] = $_FILES['profile_image']['name'];
-//             return true; // Unggah gambar berhasil
-//         } else {
-//             return false; // Unggah gambar gagal
-//         }
-//     } else {
-//         return false; // Tidak ada gambar yang diunggah
-//     }
-// }
+        public function get_absensi_data() {
+            $query = $this->db->get('absensi'); // Misalnya, tabel absensi disimpan dalam database
+    
+            if ($query->num_rows() > 0) {
+                return $query->result(); // Mengembalikan data absensi sebagai objek
+            } else {
+                return array(); // Mengembalikan array kosong jika tidak ada data
+            }
+        }
 }
 ?>

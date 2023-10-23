@@ -83,14 +83,12 @@
                 </li>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
-         <div> 
-               <!-- Mengganti teks "Keluar" dengan gambar kecil dan transparan --> 
-             <a href="<?php echo base_url('auth/logout')?>" style="color: #fff; text-decoration: none;"> 
-                <img src="https://png.pngtree.com/png-vector/20190505/ourmid/pngtree-vector-logout-icon-png-image_1022628.jpg" 
-                alt="Logout" style="width: 20px; opacity: 0.5; margin-right: 10px;" /> 
-             </a> 
-             Logout
-         </div>
+      <li>
+                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span class="ml-3">Logout</span>
+                    </a>
+                </li>
       </ul>
    </div>
 </aside>
