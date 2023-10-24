@@ -59,27 +59,37 @@ class karyawan extends CI_Controller
         $this->load->view('karyawan/ubah_karyawan', $data);
     }    
 
-        // profil
+     // profil
         public function profil_karyawan()
         {
             $data['akun'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
             $this->load->view('karyawan/profil_karyawan', $data);
         }
 
-        // untuk aksi ubah
-        public function aksi_ubah_karyawan() { 
-            $id = $this->input->post('id'); 
-            $kegiatan = $this->input->post('kegiatan'); 
-        
-            $data = [
-                'kegiatan' => $kegiatan,
-            ];
-        
-            $this->M_model->update('absensi', $data, array('id'=>$id)); 
-            redirect(base_url('karyawan/history_absen')); 
-            $this->session->set_flashdata('berhasil_ubah_absen', 'Berhasil mengubah kegiatan atau keterangan izin'); 
+       // untuk aksi ubah
+       public function aksi_ubah_karyawan() {
+        $id = $this->input->post('id'); 
+        $kegiatan = $this->input->post('kegiatan'); 
+    
+        $data = [
+            'kegiatan' => $kegiatan,
+        ];
+    
+        // Panggil model M_model untuk melakukan pembaruan
+        $this->load->model('M_model');
+        $result = $this->M_model->update_absensi($id, $data);
+    
+        if ($result) {
+            // Perubahan berhasil
+            $this->session->set_flashdata('success', 'Data berhasil diubah.');
+        } else {
+            // Perubahan gagal
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat mengubah data.');
         }
-        
+    
+        redirect(base_url('karyawan/history_absen'));
+    }    
+
         public function absen()
 	{
 		$id_karyawan = $this->session->userdata('id');

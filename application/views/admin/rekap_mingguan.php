@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 
     <style>
     table, th, td {
@@ -90,10 +91,10 @@
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
       <li>
-                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        <span class="ml-3">Logout</span>
-                    </a>
+      <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
+    <i class="fas fa-sign-out-alt mr-2"></i>
+    <span class="ml-3">Logout</span>
+</a>
                 </li>
       </ul>
    </div>
@@ -122,6 +123,7 @@
     <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-3 py-2 text-xs text-gray-500">NO</th>
+                                <!-- <th class="px-3 py-2 text-xs text-gray-500">NAMA</th> -->
                                 <th class="px-3 py-2 text-xs text-gray-500">
                                     KEGIATAN
                                 </th>
@@ -129,12 +131,14 @@
                                 <th class="px-3 py-2 text-xs text-gray-500">JAM MASUK</th>
                                 <th class="px-3 py-2 text-xs text-gray-500">JAM PULANG</th>
                                 <th class="px-3 py-2 text-xs text-gray-500">KETERANGAN IZIN</th>
+                                <!-- <th class="px-3 py-2 text-xs text-gray-500">AKSI</th> -->
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-300">
                             <?php $no=0; foreach ($absensi as $absen): $no++ ?>
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
+                                <!-- <td class="px-3 py-4"><?php echo tampil_nama_karyawan_byid($absen->id_karyawan)?></td> -->
                                 <td class="px-3 py-4">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $absen->kegiatan; ?>
@@ -160,10 +164,52 @@
                                         <?php echo $absen->keterangan_izin; ?>
                                     </div>
                                 </td>
+                                <!-- <td>
+                                HAPUS 
+                                <button onClick="hapus('<?php echo $absen->id_karyawan ?>')" class="btn btn-sm btn-danger mx-1">
+                                <i class="fa-solid fa-trash"></i></button>
+                            </td> -->
                             </tr>
                             <?php endforeach?>
                         </tbody>
     </table>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- HAPUS -->
+<script>
+    function hapus(id) {
+        Swal.fire({
+            title: 'Apakah Kamu Ingin Menghapusnya?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo base_url('admin/hapus_karyawan/') ?>" + id;
+            }
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+    <!-- LOGOUT --> 
+    <script>
+   function confirmLogout() {
+    Swal.fire({
+        title: 'Yakin mau Logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Logout',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?php echo base_url('/auth') ?>";
+        }
+    });
+}
+</script>
 </body>
 </html>

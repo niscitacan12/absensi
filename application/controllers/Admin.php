@@ -53,7 +53,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/rekap_mingguan', $data);
     }
     
-
     public function rekap_bulanan() {
         $bulan = $this->input->post('bulan'); // Mengambil bulan dari input form
         $data['absensi'] = $this->M_model->get_bulanan($bulan); // Ganti dengan fungsi yang sesuai
@@ -68,16 +67,26 @@ class Admin extends CI_Controller
     }
 
     // untuk hapus 
-public function hapus($id) {
-    // Lakukan penghapusan data dengan ID tertentu dari database.
-    // Pastikan Anda mengeksekusi query penghapusan dengan benar.
-
-    if ($penghapusan_berhasil) {
-        echo "success"; // Berhasil menghapus data.
-    } else {
-        echo "failure"; // Gagal menghapus data.
+    public function hapus($id)
+    {
+       $this->M_model->delete('user', 'id', $id);
+        redirect(base_url('admin/data_karyawan'));
     }
-}
+
+    public function hapus_karyawan($id)
+    { 
+        $this->M_model->delete('absensi', 'id_karyawan', $id); 
+        switch($this->uri->segment(2)){
+            case 'tabel_karyawan':
+                redirect(base_url('admin/tabel_karyawan')); 
+            case 'rekap_harian':
+                redirect(base_url('admin/rekap_harian')); 
+            // case 'rekap_mingguan':
+            //     redirect(base_url('admin/rekap_mingguan'));
+            default:
+            redirect(base_url('admin/rekap_bulanan')); 
+        }
+    }    
 
     // profil
     public function profil_admin()

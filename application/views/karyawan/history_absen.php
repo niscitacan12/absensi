@@ -124,10 +124,10 @@
                 <!-- ... -->
                 <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
                 <li>
-                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        <span class="ml-3">Logout</span>
-                    </a>
+                <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
+    <i class="fas fa-sign-out-alt mr-2"></i>
+    <span class="ml-3">Logout</span>
+</a>
                 </li>
             </ul>
         </div>
@@ -152,7 +152,6 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama</th>
                 <th>Kegiatan</th>
                 <th>Tanggal</th>
                 <th>Jam Masuk</th>
@@ -166,7 +165,6 @@
             <?php $no= 0; foreach ($absensi as $row): $no++ ?>
             <tr>
                 <td><?php echo $no ?></td>
-                <td><?php echo $row->username ?></td>
                 <td><?php echo $row->kegiatan ?></td>
                 <td><?php echo $row->date ?></td>
                 <td><?php echo $row->jam_masuk ?></td>
@@ -192,26 +190,6 @@
     </table>
 </div>
 
-<!-- Tambahkan SweetAlert2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-<script>
-    function hapus(id) {
-        Swal.fire({
-            title: 'Apakah Kamu Ingin Menghapusnya?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo base_url('karyawan/hapus/') ?>" + id;
-            }
-        });
-    }
-</script>
-
 <?php if($this->session->flashdata('success')): ?>
 <script>
     Swal.fire({
@@ -236,25 +214,25 @@
  
  
  
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
     <!-- LOGOUT --> 
-    <script> 
-    function confirmLogout() { 
-        Swal.fire({ 
-            title: 'Yakin mau LogOut?', 
-            icon: 'warning', 
-            showCancelButton: true, 
-            confirmButtonColor: '#3085d6', 
-            cancelButtonColor: '#d33', 
-            confirmButtonText: 'Ya', 
-            cancelButtonText: 'Batal' 
-        }).then((result) => { 
-            if (result.isConfirmed) { 
-                window.location.href = "<?php echo base_url('/') ?>"; 
-            } 
-        }); 
-    } 
-    </script> 
+    <script>
+   function confirmLogout() {
+    Swal.fire({
+        title: 'Yakin mau Logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Logout',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?php echo base_url('/auth') ?>";
+        }
+    });
+}
+</script>
     <script> 
     function toggleSidebar() { 
         var sidebar = document.getElementById("sidebar"); 

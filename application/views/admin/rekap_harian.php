@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 
     <style>
     table, th, td {
@@ -84,10 +85,10 @@
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
       <li>
-                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        <span class="ml-3">Logout</span>
-                    </a>
+      <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
+    <i class="fas fa-sign-out-alt mr-2"></i>
+    <span class="ml-3">Logout</span>
+</a>
                 </li>
       </ul>
    </div>
@@ -127,7 +128,7 @@
         <thead>
         <tr>
             <th>NO</th>
-            <!-- <th>NAMA</th> -->
+            <th>NAMA</th>
             <th>
                 KEGIATAN
             </th>
@@ -135,21 +136,14 @@
             <th>JAM MASUK</th>
             <th>JAM PULANG</th>
             <th>KETERANGAN IZIN</th>
+            <th>AKSI</th>
         </tr>
         </thead>
         <tbody>
         <?php $no=0; foreach ($perhari as $rekap): $no++ ?>
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
-                                <!-- <td class="px-3 py-4">
-    <div>
-        <?php if (isset($rekap['username'])) {
-            echo $rekap['username'];
-        } else {
-            echo "Kunci 'username' tidak ditemukan dalam array.";
-        } ?>
-    </div>
-</td> -->
+                                <td class="px-3 py-4"><?= tampil_nama_karyawan_byid($rekap['id_karyawan']) ?></td>
                                 <td class="px-3 py-4">
                                     <div>
                                         <?php echo $rekap['kegiatan']; ?>
@@ -175,10 +169,49 @@
                                         <?php echo $rekap['keterangan_izin']; ?>
                                     </div>
                                 </td>
+                                <td><button onClick="hapus(' . $rekap->id_karyawan . ')" class="btn btn-sm btn-danger mx-1">
+                                    <i class="fa-solid fa-trash"></i></button></td>';
                             </tr>
                             <?php endforeach?>
     </tbody>
     </table>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- HAPUS -->
+<script>
+    function hapus(id) {
+        Swal.fire({
+            title: 'Apakah Kamu Ingin Menghapusnya?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo base_url('admin/hapus_karyawan/') ?>" + id;
+            }
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+    <!-- LOGOUT --> 
+    <script>
+   function confirmLogout() {
+    Swal.fire({
+        title: 'Yakin mau Logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Logout',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?php echo base_url('/auth') ?>";
+        }
+    });
+}
+</script>
 </body>
 </html>

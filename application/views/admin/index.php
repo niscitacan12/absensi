@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
   </head>
   <style>
     #content { 
@@ -94,10 +95,10 @@
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
       <li>
-                    <a href="<?php echo base_url('auth')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        <span class="ml-3">Logout</span>
-                    </a>
+      <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
+    <i class="fas fa-sign-out-alt mr-2"></i>
+    <span class="ml-3">Logout</span>
+</a>
                 </li>
       </ul>
    </div>
@@ -164,5 +165,24 @@
     </table>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+    <!-- LOGOUT --> 
+    <script>
+   function confirmLogout() {
+    Swal.fire({
+        title: 'Yakin mau Logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Logout',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?php echo base_url('/auth') ?>";
+        }
+    });
+}
+</script>
 </body>
 </html>

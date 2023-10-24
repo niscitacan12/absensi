@@ -106,6 +106,12 @@ class M_model extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function update_absensi($id, $data) {
+        // Lakukan pembaruan data dengan metode update
+        $this->db->where('id', $id);
+        return $this->db->update('absensi', $data);
+    }
+
     public function updateStatusPulang($id) {
         date_default_timezone_set('Asia/Jakarta');
         $data = array(
