@@ -102,14 +102,11 @@
  <!-- profil -->
  <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
-        <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
-        ?>
-        <a href="<?php echo base_url('admin/profil_admin') ?>">
-            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
-                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </a>
+    <?php foreach ($profile as $users): ?><a href="<?php echo base_url('admin/profil_admin') ?>" 
+                            class="text-light"> 
+                            <img src="<?php echo base_url('assets/images/user/' . $users->image); ?>" alt="" width="50" 
+                                class="rounded-circle mb-3"></a> 
+                        <?php endforeach ?> 
     </div>
 </div>
 <br>
@@ -159,7 +156,6 @@
                                 <th class="px-3 py-2 text-xs text-gray-500">JAM MASUK</th>
                                 <th class="px-3 py-2 text-xs text-gray-500">JAM PULANG</th>
                                 <th class="px-3 py-2 text-xs text-gray-500">KETERANGAN IZIN</th>
-                                <th class="px-3 py-2 text-xs text-gray-500">AKSI</th>
                             </tr>
                         </thead>
                         <?php $no=0; foreach ($absensi as $rekap): $no++ ?>
@@ -191,11 +187,6 @@
                                         <?php echo $rekap->keterangan_izin; ?>
                                     </div>
                                 </td>
-                                <td>
-                                <!-- HAPUS -->
-                                <button onClick="hapus(<?php echo $rekap->id_karyawan ?>)"
-                                    class="btn btn-sm btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                            </td>
                             </tr>
                             <?php endforeach?>
     </tbody>

@@ -20,7 +20,7 @@
     }
     .image img {
     width: 220px;
-    height: auto;
+    height: 530px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     }
@@ -83,7 +83,6 @@
 <br>
 <br>
 <br>
-<!-- <p class="mdb-color-text">To log in, please fill in these text fiels with your e-mail address and password.</p> -->
 <!-- Email address -->
 <div class="md-form md-outline">
 <i class="fas fa-envelope prefix"></i>
@@ -91,12 +90,13 @@
 <input type="email" id="emailExample" name="email" class="form-control">
 </div>
 <!-- Password -->
+<!-- Password -->
 <div class="md-form md-outline">
-<i class="fas fa-lock prefix"></i>
-<label for="exampleInputPassword1">Password</label>
-<input type="exampleInputPassword1" id="exampleInputPassword1" name="password" class="form-control">
-<input type="checkbox" id="showPassword" 
-onclick="togglePasswordVisibility('exampleInputPassword1')">Tampilkan Kata Sandi</input> 
+    <i class="fas fa-lock prefix"></i>
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" id="exampleInputPassword1" name="password" class="form-control">
+    <input type="checkbox" id="showPassword">
+    <label for="showPassword">Tampilkan Kata Sandi</label>
 </div>
 <div class="space">
 <br>

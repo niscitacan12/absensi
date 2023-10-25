@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Sertakan Bootstrap CSS dari sumber yang benar -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css">
   </head>
   <style>
     #content { 
@@ -38,6 +41,17 @@
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+
+  /* Gaya awal untuk menyembunyikan ikon dropdown */
+.toggle-icon {
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+}
+
+/* Gaya saat dropdown dibuka (ikon diputar) */
+#collapseExample1.show + .list-group-item .toggle-icon {
+    transform: rotate(180deg);
+}
   </style>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -68,32 +82,41 @@
                         <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                     <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Rekap Keseluruhan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-day"></i>
-                        <span class="ml-3">Rekap Harian</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-days"></i>
-                        <span class="ml-3">Rekap Mingguan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-week"></i>
-                        <span class="ml-3">Rekap Bulanan</span>
-                    </a>
-                </li>
+<!-- Menu dropdown -->
+<li class="dropdown">
+    <a class="nav_link submenu_item">
+    <i class="fa-solid fa-chevron-down"></i>
+        <span class="ml-3">Rekap</span>
+    </a>
+</li>
+<ul class="submenu">
+    <li>
+        <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="nav_link">
+        <i class="fa-solid fa-users"></i>
+        <span class="ml-3">Keseluruhan</span>
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo base_url('admin/rekap_harian')?>" class="nav_link">
+        <i class="fa-solid fa-calendar-day"></i>
+            <span class="ml-3">Harian</span>
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="nav_link">
+        <i class="fa-solid fa-calendar-days"></i>
+            <span class="ml-3">Mingguan</span>
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="nav_link">
+        <i class="fa-solid fa-calendar-week"></i>
+            <span class="ml-3">Bulanan</span>
+        </a>
+    </li>
+</ul>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
       <li>
       <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
     <i class="fas fa-sign-out-alt mr-2"></i>
@@ -107,14 +130,11 @@
  <!-- profil -->
  <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
-        <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
-        ?>
-        <a href="<?php echo base_url('admin/profil_admin') ?>">
-            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
-                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </a>
+    <?php foreach ($profile as $users): ?><a href="<?php echo base_url('admin/profil_admin') ?>" 
+                            class="text-light"> 
+                            <img src="<?php echo base_url('assets/images/user/' . $users->image); ?>" alt="" width="50" 
+                                class="rounded-circle mb-3"></a> 
+                        <?php endforeach ?> 
     </div>
 </div>
 <br>
@@ -183,6 +203,25 @@
         }
     });
 }
+</script>
+<!-- Script JavaScript untuk toggle dropdown -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+<script>
+    // Mengambil elemen tombol yang memiliki atribut data-mdb-toggle
+    const dropdownToggle = document.querySelector('[data-mdb-toggle="collapse"]');
+
+    dropdownToggle.addEventListener('click', function() {
+        const icon = dropdownToggle.querySelector('i');
+
+        // Toggle ikon dropdown antara atas dan bawah
+        if (icon.classList.contains('fa-chevron-down')) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+    });
 </script>
 </body>
 </html>

@@ -94,7 +94,7 @@
             </button>
             <!-- Profil Navbar -->
             <div class="navbar-profile">
-                <a href="<?php echo base_url('karyawan/profil_karyawan') ?>" class="text-gray-900 dark:text-white">
+                <a href="<?php echo base_url('admin/profil_admin') ?>" class="text-gray-900 dark:text-white">
                     <i class="fa-regular fa-user"></i>
                     <span class="ml-3"></span>
                 </a>
@@ -103,55 +103,70 @@
     </nav>
 
     <div class="row">
+        <!-- sidebar -->
         <div class="col-2">
-            <!-- sidebar -->
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <a href="#" class="flex flex-col items-center mb-5">
-                <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
-                <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
-            </a>
-            <hr>
-            <br>
-            <ul class="space-y-2 font-medium">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+      <a href="#" class="flex items-center pl-2.5 mb-5">
+         <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
+         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
+      </a>
+      <ul class="space-y-2 font-medium">
+        <hr>
                 <li>
-                    <a href="karyawan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="ml-3">Home</span>
+                    <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-user"></i> 
+                        <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('karyawan/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fas fa-file mr-2"></i>
-                        <span class="ml-3">History Absen</span>
+                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <i class="fa-solid fa-users"></i>
+                        <span class="ml-3">Rekap Keseluruhan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('karyawan/absensi')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fas fa-calendar-check mr-2"></i>
-                        <span class="ml-3">Absen Karyawan</span>
+                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-day"></i>
+                        <span class="ml-3">Rekap Harian</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
-                        <i class="fas fa-user-check mr-2"></i>
-                        <span class="ml-3">Izin Karyawan</span>
+                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-days"></i>
+                        <span class="ml-3">Rekap Mingguan</span>
                     </a>
                 </li>
-                <!-- Sidebar item lainnya -->
-                <!-- ... -->
-                <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
                 <li>
-                <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
+                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-calendar-week"></i>
+                        <span class="ml-3">Rekap Bulanan</span>
+                    </a>
+                </li>
+         <!-- untuk memberikan jarak -->
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+      <li>
+      <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
     <i class="fas fa-sign-out-alt mr-2"></i>
     <span class="ml-3">Logout</span>
 </a>
                 </li>
-            </ul>
+      </ul>
+   </div>
+</aside>
         </div>
-    </aside>
-        </div>
+        <!-- profil -->
         <div class="col-10">
+        <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+    <div style="text-align: center;">
+    <?php foreach ($profile as $users): ?><a href="<?php echo base_url('admin/profil_admin') ?>" 
+                            class="text-light"> 
+                            <img src="<?php echo base_url('assets/images/user/' . $users->image); ?>" alt="" width="50" 
+                                class="rounded-circle mb-3"></a> 
+                        <?php endforeach ?> 
+    </div>
+</div>
+<br>
             <!-- content profil-->
             <div class="container">
                 <div class="row ">
@@ -164,7 +179,7 @@
                                 src="<?php echo base_url('assets/images/user/' .$user->image) ?>" alt="">
                                 <div class="small font-italic text-muted">Harus berbentuk jpg/jpeg/png.</div>
                                 <p class="small font-italic text-muted mb-4">Disarankan berukuran 1:1</p>
-                                <form action="<?php echo base_url('karyawan/edit_foto'); ?>" method="post"
+                                <form action="<?php echo base_url('admin/edit_foto'); ?>" method="post"
                                     enctype="multipart/form-data">
                                     <label for="image_upload" class="btn btn-info">
                                         Edit Foto
@@ -180,7 +195,7 @@
                         <div class="card mb-4">
                             <div class="card-header bg-primary text-white text-center">Informasi Data</div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('karyawan/edit_profile'); ?>"
+                                <form action="<?php echo base_url('admin/edit_profile'); ?>"
                                     enctype="multipart/form-data" method="post">
                                     <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
@@ -244,7 +259,7 @@
             </div>
         </div>
     </div>
-<br>
+    <br>
                                     <button class="btn btn-info" type="submit">Simpan Perubahan</button>
                                 </form>
                             </div>
@@ -269,8 +284,6 @@
     jumlahIzinElement.textContent = '<?php echo $jumlahIzin; ?>';
     jumlahTotalElement.textContent = '<?php echo $jumlahTotal; ?>';
     </script>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
     <!-- LOGOUT --> 
@@ -303,8 +316,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- script untuk password -->
-    <script>
+     <!-- script untuk password -->
+     <script>
     document.getElementById('showPassword').addEventListener('click', function() {
         var passwordInput = document.getElementById('password');
         if (passwordInput.type === 'password') {

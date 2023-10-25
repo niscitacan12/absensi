@@ -284,5 +284,20 @@ class M_model extends CI_Model
                 return array(); // Mengembalikan array kosong jika tidak ada data
             }
         }
+
+        public function getRekapHarian($tanggal) {
+            // Gantilah 'nama_tabel' dengan nama tabel yang sesuai di database Anda
+            $this->db->select('*');
+            $this->db->from('absensi');
+            $this->db->where('date', $tanggal); // Menyaring berdasarkan tanggal
+    
+            $query = $this->db->get();
+    
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            } else {
+                return array(); // Mengembalikan array kosong jika tidak ada data yang ditemukan
+            }
+        }
 }
 ?>

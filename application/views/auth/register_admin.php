@@ -20,7 +20,7 @@
     }
     .image img {
     width: 220px;
-    height: 620px;
+    height: 700px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     }
@@ -107,16 +107,14 @@
                         name="nama_belakang" class="block mb-2 text-sm" required> 
                         </div>
                         <div class="md-form md-outline">
-<i class="fas fa-envelope prefix"></i>
-                    <label for="exampleInputPassword1">Password</label> 
-                    <input type="exampleInputPassword1" id="exampleInputPassword1" class="form-control" 
-                        name="password" class="block mb-2 text-sm" required> 
-                        <input type="checkbox" id="showPassword" 
-                        onclick="togglePasswordVisibility('exampleInputPassword1')">Tampilkan Kata Sandi</input> 
-                        <br>
-                    <small style="color:red">Kata sandi minimal harus 8 karakter!</small> 
-                    <div class="md-form md-outline">
+                        <i class="fas fa-lock prefix"></i>
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" id="exampleInputPassword1" class="form-control" name="password" required>
                     </div>
+                    <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility('exampleInputPassword1')"> Tampilkan Kata Sandi
+                    <br>
+                    <small style="color:red">Kata sandi minimal harus 8 karakter!</small>
+                    <div class="md-form md-outline"></div>
                     <br>
                     <div class="">
                     <button type="submit" class="btn btn-rounded">Register</button> 
@@ -129,21 +127,15 @@
 </div>
 </div> 
      <!-- aksi show password -->
-<script>
-        // Ambil elemen password input
-        var passwordInput = document.getElementById("exampleInputPassword1");
-        
-        // Ambil elemen checkbox "Show Password"
-        var showPasswordCheckbox = document.getElementById("showPassword");
-
-        // Tambahkan event listener untuk mengubah tipe input password menjadi text ketika checkbox "Show Password" dicentang
-        showPasswordCheckbox.addEventListener("change", function() {
-            if (this.checked) {
-                passwordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-            }
-        });
-    </script>   
+     <script>
+    function togglePasswordVisibility(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>   
 </body>
 </html>

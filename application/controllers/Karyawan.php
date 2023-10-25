@@ -15,6 +15,8 @@ class karyawan extends CI_Controller
     }
     public function index()
     {
+        
+
         // Mengisi data yang diperlukan untuk tampilan
         $data = array(
             'title' => 'Dashboard Karyawan', // Judul halaman
@@ -22,12 +24,15 @@ class karyawan extends CI_Controller
         );
         $data['absensi'] = $this->M_model->get_absensi_data();
         // Menampilkan tampilan (sesuaikan dengan nama tampilan Anda)
+        $data['profile'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
         $this->load->view('karyawan/index', $data);
     }
 
     // untuk absen
     public function absensi()
     {
+        $data['profile'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
+
         $this->load->model('Absensi_model');
         $data['absensi'] = $this->Absensi_model->getAbsensi();
         $this->load->view('karyawan/absensi', $data);
@@ -36,6 +41,8 @@ class karyawan extends CI_Controller
     // untuk history absen
     public function history_absen()
     {
+        $data['profile'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
+
         $id_karyawan = $this->session->userdata('id');
         $data['absensi'] = $this->M_model->get_data('absensi')->result();
         $this->load->view('karyawan/history_absen', $data);
@@ -43,7 +50,8 @@ class karyawan extends CI_Controller
 
      // untuk izin karyawan
      public function izin_karyawan() {
-    
+        $data['profile'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
+
         $data['absensi'] = $this->M_model->get_data('absensi')->result();
         $data['akun'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
         $this->load->view('karyawan/izin_karyawan', $data);
@@ -62,6 +70,8 @@ class karyawan extends CI_Controller
      // profil
         public function profil_karyawan()
         {
+            $data['profile'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
+
             $data['akun'] = $this->M_model->get_by_id('user', 'id', $this->session->userdata('id'))->result();
             $this->load->view('karyawan/profil_karyawan', $data);
         }

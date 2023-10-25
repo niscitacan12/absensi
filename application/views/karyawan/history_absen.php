@@ -136,14 +136,11 @@
   <!-- profil -->
   <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
     <div style="text-align: center;">
-        <?php
-        $image_url = isset($this->session->userdata['image']) ? base_url('./assets/images/user/' . $this->session->userdata('image')) : base_url('./assets/images/user/User.png');
-        ?>
-        <a href="<?php echo base_url('karyawan/profil_karyawan') ?>">
-            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin: 0 auto; background: url('<?php echo $image_url; ?>') center center no-repeat; background-size: cover;">
-                <img src="<?php echo $image_url; ?>" alt="profileImg" style="visibility: hidden; width: 100%; height: 100%; object-fit: cover;">
-            </div>
-        </a>
+    <?php foreach ($profile as $users): ?><a href="<?php echo base_url('karyawan/profil_karyawan') ?>" 
+                            class="text-light"> 
+                            <img src="<?php echo base_url('assets/images/user/' . $users->image); ?>" alt="" width="50" 
+                                class="rounded-circle mb-3"></a> 
+                        <?php endforeach ?>
     </div>
 </div>
 

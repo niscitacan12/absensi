@@ -157,6 +157,16 @@
         </div>
         <!-- profil -->
         <div class="col-10">
+        <div id="content" role="main" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 10vh;">
+    <div style="text-align: center;">
+    <?php foreach ($profile as $users): ?><a href="<?php echo base_url('admin/profil_admin') ?>" 
+                            class="text-light"> 
+                            <img src="<?php echo base_url('assets/images/user/' . $users->image); ?>" alt="" width="50" 
+                                class="rounded-circle mb-3"></a> 
+                        <?php endforeach ?> 
+    </div>
+</div>
+<br>
             <!-- content profil-->
             <div class="container">
                 <div class="row ">
