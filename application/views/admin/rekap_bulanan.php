@@ -9,6 +9,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+        <!-- Tautan ke Font Awesome CSS (jika Anda ingin menggunakannya) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+<!-- Tautan ke Bootstrap JavaScript (JQuery dan Popper.js diperlukan) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
     <style>
     table, th, td {
@@ -31,6 +38,16 @@
     .text-center {
     text-align: center;
     margin-bottom: 20px; /* Atur margin bawah sesuai kebutuhan Anda */
+}
+     /* Gaya awal untuk menyembunyikan ikon dropdown */
+     .toggle-icon {
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+}
+
+/* Gaya saat dropdown dibuka (ikon diputar) */
+#collapseExample1.show + .list-group-item .toggle-icon {
+    transform: rotate(180deg);
 }
 </style>
 
@@ -57,38 +74,47 @@
       <ul class="space-y-2 font-medium">
         <hr>
         <br>
+        <li>
+                    <a href="<?php echo base_url('admin')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-school-flag"></i>
+                        <span class="ml-3">Dashboard</span>
+                    </a>
+                </li>
       <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
                         <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                     <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Rekap Keseluruhan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                         <!-- Menu dropdown -->
+<div class="container">
+            <!-- Menu dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Rekapan
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/tabel_karyawan')?>">
+                    <i class="fa-solid fa-users"></i>
+            <span class="ml-3">Keseluruhan</span>
+                    </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_harian')?>">
                     <i class="fa-solid fa-calendar-day"></i>
-                        <span class="ml-3">Rekap Harian</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <span class="ml-3">Harian</span>
+                    </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_mingguan')?>">
                     <i class="fa-solid fa-calendar-days"></i>
-                        <span class="ml-3">Rekap Mingguan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <span class="ml-3">Mingguan</span>
+                </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_bulanan')?>">
                     <i class="fa-solid fa-calendar-week"></i>
-                        <span class="ml-3">Rekap Bulanan</span>
-                    </a>
-                </li>
+            <span class="ml-3">Bulanan</span>
+                </a></li>
+                </ul>
+            </li>
+        </div>
          <!-- untuk memberikan jarak -->
-      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+      <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> 
       <li>
       <a href="javascript:void(0);" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group" onclick="confirmLogout()">
     <i class="fas fa-sign-out-alt mr-2"></i>

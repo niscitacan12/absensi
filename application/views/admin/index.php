@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!-- Sertakan Bootstrap CSS dari sumber yang benar -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css">
+      <!-- Tautan ke Bootstrap CSS (versi 5.0.0 saat ini) -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+
+<!-- Tautan ke Font Awesome CSS (jika Anda ingin menggunakannya) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+<!-- Tautan ke Bootstrap JavaScript (JQuery dan Popper.js diperlukan) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</head>
   </head>
   <style>
     #content { 
@@ -77,44 +88,44 @@
       <br>
       <ul class="space-y-2 font-medium">
                 <li>
+                    <a href="" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-school-flag"></i>
+                        <span class="ml-3">Dashboard</span>
+                    </a>
+                </li>
+                <li>
                     <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i> 
                         <span class="ml-3">Data Karyawan</span>
                     </a>
                 </li>
 <!-- Menu dropdown -->
-<li class="dropdown">
-    <a class="nav_link submenu_item">
-    <i class="fa-solid fa-chevron-down"></i>
-        <span class="ml-3">Rekap</span>
-    </a>
-</li>
-<ul class="submenu">
-    <li>
-        <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="nav_link">
-        <i class="fa-solid fa-users"></i>
-        <span class="ml-3">Keseluruhan</span>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url('admin/rekap_harian')?>" class="nav_link">
-        <i class="fa-solid fa-calendar-day"></i>
+<div class="container">
+            <!-- Menu dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Rekapan
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/tabel_karyawan')?>">
+                    <i class="fa-solid fa-users"></i>
+            <span class="ml-3">Keseluruhan</span>
+                    </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_harian')?>">
+                    <i class="fa-solid fa-calendar-day"></i>
             <span class="ml-3">Harian</span>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="nav_link">
-        <i class="fa-solid fa-calendar-days"></i>
+                    </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_mingguan')?>">
+                    <i class="fa-solid fa-calendar-days"></i>
             <span class="ml-3">Mingguan</span>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="nav_link">
-        <i class="fa-solid fa-calendar-week"></i>
+                </a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url('admin/rekap_bulanan')?>">
+                    <i class="fa-solid fa-calendar-week"></i>
             <span class="ml-3">Bulanan</span>
-        </a>
-    </li>
-</ul>
+                </a></li>
+                </ul>
+            </li>
+        </div>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
       <li>
@@ -139,22 +150,35 @@
 </div>
 <br>
 <div class="flex space-x-4 p-2 my-5" style="margin-left: 400px;">
-        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Total Karyawan</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Izin</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Total Masuk Kerja</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
+<div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <i class="fas fa-user text-2xl mr-2"></i> <!-- Ikon Font Awesome -->
+    <div>
+        <p>Total Karyawan</p>
     </div>
+    <div class="flex-grow"></div>
+    <div>
+        <h1 class="text-4xl font-bold">4</h1>
+    </div>
+</div>
+<div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <i class="fas fa-calendar text-2xl mr-2"></i>  <!-- Ikon Font Awesome -->
+    <div>
+        <p>Jumlah Izin</p>
+    </div>
+    <div class="flex-grow"></div>
+    <div>
+        <h1 class="text-4xl font-bold">4</h1>
+    </div>
+</div>
+<div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <div>
+        <i class="fas fa-clock text-2xl mr-2"></i> <!-- Ikon Font Awesome -->
+        <p>Total Masuk Kerja</p>
+    </div>
+    <div class="flex-grow"></div>
+    <h1 class="text-4xl font-bold">4</h1>
+</div>
+</div>
     <br><br>
     <div id="content" class="mx-auto w-3/4">
     <table class="table table-striped table-hover" style="margin-left: 150px">

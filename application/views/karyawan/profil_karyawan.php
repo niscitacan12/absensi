@@ -107,40 +107,34 @@
         <div class="col-2">
         <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-black" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <a href="#" class="flex items-center pl-2.5 mb-5">
-         <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
-         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
-      </a>
+   <a href="#" class="flex flex-col items-center mb-5">
+                <span class="text-xl font-semibold whitespace-nowrap dark:text-white">ABSENSI</span>
+                <i class="fa-solid fa-fingerprint text-4xl mt-2 self-center dark:text-white"></i>
+            </a>
       <ul class="space-y-2 font-medium">
         <hr>
-                <li>
-                    <a href="<?php echo base_url('admin/data_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-user"></i> 
-                        <span class="ml-3">Data Karyawan</span>
+        <li>
+                    <a href="<?php echo base_url('karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="ml-3">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin/tabel_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                     <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Rekap Keseluruhan</span>
+                    <a href="<?php echo base_url('karyawan/history_absen')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fas fa-file mr-2"></i>
+                        <span class="ml-3">History Absen</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin/rekap_harian')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-day"></i>
-                        <span class="ml-3">Rekap Harian</span>
+                    <a href="<?php echo base_url('karyawan/absensi')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        <span class="ml-3">Absen Karyawan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin/rekap_mingguan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-days"></i>
-                        <span class="ml-3">Rekap Mingguan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo base_url('admin/rekap_bulanan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-calendar-week"></i>
-                        <span class="ml-3">Rekap Bulanan</span>
+                    <a href="<?php echo base_url('karyawan/izin_karyawan')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover-bg-gray-700 group">
+                        <i class="fas fa-user-check mr-2"></i>
+                        <span class="ml-3">Izin Karyawan</span>
                     </a>
                 </li>
          <!-- untuk memberikan jarak -->

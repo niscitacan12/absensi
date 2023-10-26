@@ -164,26 +164,44 @@
 ); ?></h1>
 <br>
     <div class="flex space-x-4 p-2 my-5" style="margin-left: 400px;">
-        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Total Karyawan</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Total Cuti</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Izin</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Total Masuk Kerja</p>
-            <br>
-            <h1 class="text-4xl font-bold">4</h1>
-        </div>
+    <div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <i class="fas fa-user text-2xl mr-2"></i> <!-- Ikon Font Awesome -->
+    <div>
+        <p>Total Karyawan</p>
+    </div>
+    <div class="flex-grow"></div>
+    <div>
+        <h1 class="text-4xl font-bold">4</h1>
+    </div>
+</div>
+<div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+<i class="fas fa-bed text-2xl mr-2"></i> <!-- Ikon Font Awesome -->
+    <div>
+        <p>Total Cuti</p>
+    </div>
+    <div class="flex-grow"></div>
+    <div>
+        <h1 class="text-4xl font-bold">4</h1>
+    </div>
+</div>
+        <div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <i class="fas fa-calendar text-2xl mr-2"></i>  <!-- Ikon Font Awesome -->
+    <div>
+        <p>Jumlah Izin</p>
+    </div>
+    <div class="flex-grow"></div>
+    <div>
+        <h1 class="text-4xl font-bold">4</h1>
+    </div>
+</div>
+<div class="w-1/4 bg-blue-600 p-4 text-stone-50 rounded-lg shadow-md flex items-center">
+    <div>
+        <i class="fas fa-clock text-2xl mr-2"></i> <!-- Ikon Font Awesome -->
+        <p>Total Masuk Kerja</p>
+    </div>
+    <div class="flex-grow"></div>
+    <h1 class="text-4xl font-bold">4</h1>
+</div>
     </div>
 <br>
     <div id="content" class="mx-auto w-3/4">
